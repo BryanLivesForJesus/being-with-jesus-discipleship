@@ -4,80 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Being with Jesus | Men's Cohort</title>
-    <!-- Injecting Tailwind CSS for instant modern styling -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom font import for a modern look */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-200 antialiased selection:bg-blue-500 selection:text-white pb-20">
+<body class="bg-gradient-to-br from-teal-800 via-teal-950 to-slate-950 min-h-screen text-teal-50 antialiased pb-24">
     
-    <!-- Hero Section -->
-    <header class="bg-slate-800 border-b border-slate-700 py-12 px-6 text-center shadow-lg">
-        <h1 class="text-4xl font-extrabold text-white tracking-tight mb-2">Being with <span class="text-blue-400">Jesus</span></h1>
-        <p class="text-slate-400 text-lg font-medium">Paul & Roy's Men's Cohort • Fall 2026</p>
+    <!-- Hero Section (Matches the Image Aesthetic) -->
+    <header class="pt-8 pb-6 px-4 text-center">
+        <!-- Make sure image_cee70a.jpg is in the same folder as this index.html file -->
+        <img src="image_cee70a.jpg" alt="Being with Jesus: A journey through Acts" class="w-full max-w-md mx-auto rounded-xl shadow-2xl mb-6 border border-teal-700/50">
+        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-2">Paul & Roy's Men's Cohort</h1>
+        <p class="text-teal-200 font-medium">An independent SCG Discipleship study group</p>
     </header>
 
-    <main class="max-w-3xl mx-auto px-4 mt-8 space-y-12">
+    <main class="max-w-3xl mx-auto px-4 space-y-8">
         
-        <!-- Welcome Card -->
-        <section class="bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-700">
-            <h2 class="text-2xl font-bold text-white mb-3">Our Mission</h2>
-            <p class="text-slate-300 leading-relaxed">
-                We are a brotherhood walking through the Book of Acts together. Our goal is simple: learn to be with Jesus, live differently, and send it. 
-            </p>
-            <p class="text-xs text-slate-500 mt-4 italic">
-                *This is an independent, member-led study and is not officially operated or endorsed by SCG Church.
-            </p>
-        </section>
-
-        <!-- Modern Podcast Grid -->
-        <section>
-            <h2 class="text-2xl font-bold text-white mb-4 px-2">Daily Podcasts</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <a href="#" class="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-xl p-4 transition-all duration-200 shadow-md transform hover:-translate-y-1">
-                    <span class="text-xl">🍏</span>
-                    <span class="font-semibold">Apple</span>
-                </a>
-                <a href="#" class="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-xl p-4 transition-all duration-200 shadow-md transform hover:-translate-y-1">
-                    <span class="text-xl">🟢</span>
-                    <span class="font-semibold">Spotify</span>
-                </a>
-                <a href="#" class="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-xl p-4 transition-all duration-200 shadow-md transform hover:-translate-y-1">
-                    <span class="text-xl">▶️</span>
-                    <span class="font-semibold">YouTube</span>
-                </a>
+        <!-- Logistics / Meeting Details Card -->
+        <section class="bg-teal-900/60 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-teal-700/50 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                <h2 class="text-teal-400 text-sm font-bold uppercase tracking-wider mb-1">Meeting Time</h2>
+                <p class="text-xl font-bold text-white">Sundays, 9:00–10:15am</p>
+                <p class="text-teal-200 text-sm mt-1">Sept 13 – Nov 15, 2026</p>
+            </div>
+            <div class="bg-teal-800/80 px-4 py-2 rounded-lg text-center border border-teal-600/50">
+                <span class="block text-xs text-teal-300 font-bold uppercase">Current Week</span>
+                <span class="block text-xl font-black text-white">Week 1</span>
             </div>
         </section>
 
-        <!-- Sleek Schedule Preview -->
-        <section>
-            <div class="flex justify-between items-end mb-4 px-2">
-                <h2 class="text-2xl font-bold text-white">Current Focus</h2>
-                <span class="bg-blue-900 text-blue-300 text-xs font-bold px-3 py-1 rounded-full">Week 1</span>
+        <!-- Official Welcome & Vision -->
+        <section class="bg-teal-900/40 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-teal-800/50">
+            <h2 class="text-2xl font-bold text-white mb-4">Learn to be with Jesus from the people who actually were.</h2>
+            
+            <div class="space-y-4 text-teal-100/90 leading-relaxed text-sm md:text-base">
+                <p>
+                    Jesus doesn't just call us to follow Him from a distance—He invites us to be WITH Him, to become like Him, and to hand over every corner of our lives to His loving leadership. This session of SCG Discipleship is built around one simple, transformative idea: learning to Be WITH Jesus. When we learn to live in step with Him, we open the door for Him to shape us into who He created us to be.
+                </p>
+                <p>
+                    And here's what you'll discover along the way: drawing close to Jesus always draws you closer to His people. You were never meant to follow after Jesus alone. You were made to grow in community, leaning on other believers who spur you forward when the road gets hard.
+                </p>
+                <p>
+                    You're not the first to walk this road; you're joining a story already in motion. The book of Acts is where that story first comes to life. It's the thrilling, high-stakes account of the Church's birth: ordinary men and women who planted the first seeds of faith and watched them grow into a movement that would change the world forever.
+                </p>
+                <p>
+                    In this study, we're going straight to the source, tapping into the rich heritage the first generation of Christians left for us. We'll dig into their "acts"—the habits, the practices, the everyday choices that made them strong enough for the mission Jesus set before them. Walk with the Apostles. Learn from the Early Church. And discover how their example still shows us the way to live fully WITH Jesus today.
+                </p>
             </div>
-            <div class="bg-gradient-to-r from-blue-900 to-slate-800 rounded-2xl p-6 shadow-xl border border-blue-800">
-                <h3 class="text-xl font-bold text-white mb-1">Welcome to Acts</h3>
-                <p class="text-blue-200 text-sm mb-4">Sept 13, 2026 • Launch Week</p>
-                <button class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-xl transition-colors">
-                    View Full 10-Week Schedule
-                </button>
+        </section>
+
+        <!-- Podcasts Section -->
+        <section>
+            <h2 class="text-lg font-bold text-teal-100 mb-3 px-2">Listen to the Daily Podcast</h2>
+            <div class="grid grid-cols-3 gap-3">
+                <a href="#" class="flex flex-col items-center justify-center gap-2 bg-teal-900/60 hover:bg-teal-800 border border-teal-700/50 rounded-xl p-4 transition-all duration-200 shadow-md transform hover:-translate-y-1">
+                    <span class="text-2xl">🍏</span>
+                    <span class="font-semibold text-xs text-teal-50">Apple</span>
+                </a>
+                <a href="#" class="flex flex-col items-center justify-center gap-2 bg-teal-900/60 hover:bg-teal-800 border border-teal-700/50 rounded-xl p-4 transition-all duration-200 shadow-md transform hover:-translate-y-1">
+                    <span class="text-2xl">🟢</span>
+                    <span class="font-semibold text-xs text-teal-50">Spotify</span>
+                </a>
+                <a href="#" class="flex flex-col items-center justify-center gap-2 bg-teal-900/60 hover:bg-teal-800 border border-teal-700/50 rounded-xl p-4 transition-all duration-200 shadow-md transform hover:-translate-y-1">
+                    <span class="text-2xl">▶️</span>
+                    <span class="font-semibold text-xs text-teal-50">YouTube</span>
+                </a>
             </div>
         </section>
 
     </main>
 
-    <!-- App-like Floating Bottom Bar -->
-    <nav class="fixed bottom-0 w-full bg-slate-900/95 backdrop-blur-md border-t border-slate-800 px-6 py-4 flex justify-around">
-        <button class="text-slate-400 hover:text-blue-400 font-medium text-sm flex flex-col items-center transition-colors">
+    <!-- Floating Bottom Navigation -->
+    <nav class="fixed bottom-0 w-full bg-slate-950/90 backdrop-blur-lg border-t border-teal-900/50 px-6 py-4 flex justify-around shadow-2xl">
+        <button class="text-teal-400 font-bold text-sm flex flex-col items-center transition-colors">
+            <span class="text-xl mb-1">📖</span> Overview
+        </button>
+        <button class="text-teal-600 hover:text-teal-300 font-medium text-sm flex flex-col items-center transition-colors">
             <span class="text-xl mb-1">📅</span> Schedule
         </button>
-        <button class="text-slate-400 hover:text-blue-400 font-medium text-sm flex flex-col items-center transition-colors">
-            <span class="text-xl mb-1">🤝</span> Serve
-        </button>
-        <button class="text-slate-400 hover:text-blue-400 font-medium text-sm flex flex-col items-center transition-colors">
+        <button class="text-teal-600 hover:text-teal-300 font-medium text-sm flex flex-col items-center transition-colors">
             <span class="text-xl mb-1">🔒</span> Portal
         </button>
     </nav>
