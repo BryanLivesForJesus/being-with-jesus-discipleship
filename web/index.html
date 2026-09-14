@@ -3,92 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Being with Jesus | Men's Cohort</title>
-    <!-- Tailwind CSS -->
+    <title>Being with Jesus | Quick Reference Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-gradient-to-br from-teal-800 via-teal-950 to-slate-950 min-h-screen text-teal-50 antialiased pb-24">
-    
-    <!-- Hero Section (Matches the Image Aesthetic) -->
-    <header class="pt-8 pb-6 px-4 text-center">
-        <!-- Make sure image_cee70a.jpg is in the same folder as this index.html file -->
-        <img src="image_cee70a.jpg" alt="Being with Jesus: A journey through Acts" class="w-full max-w-md mx-auto rounded-xl shadow-2xl mb-6 border border-teal-700/50">
-        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-2">Paul & Roy's Men's Cohort</h1>
-        <p class="text-teal-200 font-medium">An independent SCG Discipleship study group</p>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased pb-20">
+
+    <!-- Top Header & Logo Banner -->
+    <header class="bg-slate-900 border-b border-slate-800/80 pt-6 pb-4 px-4 sticky top-0 z-50 backdrop-blur-md bg-slate-900/90 shadow-md">
+        <div class="max-w-2xl mx-auto flex flex-col items-center text-center">
+            <img src="Discipleship_logo.jpeg" alt="Being with Jesus" class="w-full max-w-sm rounded-lg shadow-lg border border-slate-700/60 mb-3">
+            <div class="flex flex-wrap justify-center items-center gap-2 text-xs font-semibold text-teal-400">
+                <span class="bg-slate-800 px-3 py-1 rounded-full border border-slate-700">Sundays 9:00 AM – 10:30 AM</span>
+                <span class="bg-slate-800 px-3 py-1 rounded-full border border-slate-700">Paul & Roy's Cohort</span>
+            </div>
+        </div>
     </header>
 
-    <main class="max-w-3xl mx-auto px-4 space-y-8">
-        
-        <!-- Logistics / Meeting Details Card -->
-        <section class="bg-teal-900/60 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-teal-700/50 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div>
-                <h2 class="text-teal-400 text-sm font-bold uppercase tracking-wider mb-1">Meeting Time</h2>
-                <p class="text-xl font-bold text-white">Sundays, 9:00–10:15am</p>
-                <p class="text-teal-200 text-sm mt-1">Sept 13 – Nov 15, 2026</p>
+    <main class="max-w-2xl mx-auto px-4 mt-6 space-y-5">
+
+        <!-- Search / Quick Filter Bar -->
+        <div class="relative">
+            <input type="text" id="memberSearch" placeholder="Search brother's name (e.g. Bryan, Roy, Joe, Nate)..." 
+                   class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 pl-10 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all shadow-sm">
+            <span class="absolute left-3.5 top-3.5 text-slate-500 text-sm">🔍</span>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="grid grid-cols-3 gap-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs font-semibold">
+            <button onclick="switchTab('schedule')" id="tabBtn-schedule" class="py-2.5 rounded-lg bg-teal-600 text-white shadow-sm transition-all text-center">
+                📅 Schedule
+            </button>
+            <button onclick="switchTab('roster')" id="tabBtn-roster" class="py-2.5 rounded-lg text-slate-400 hover:text-white transition-all text-center">
+                👥 Sharing & M.I.A.
+            </button>
+            <button onclick="switchTab('events')" id="tabBtn-events" class="py-2.5 rounded-lg text-slate-400 hover:text-white transition-all text-center">
+                ⚡ Fast & Links
+            </button>
+        </div>
+
+        <!-- TAB 1: WEEKLY SCHEDULE -->
+        <section id="tab-schedule" class="space-y-3">
+            <div class="flex justify-between items-center px-1">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400">10-Week Journey Through Acts</h2>
+                <span class="text-xs text-teal-400 font-medium">Tap any week for details</span>
             </div>
-            <div class="bg-teal-800/80 px-4 py-2 rounded-lg text-center border border-teal-600/50">
-                <span class="block text-xs text-teal-300 font-bold uppercase">Current Week</span>
-                <span class="block text-xl font-black text-white">Week 1</span>
+            <div id="scheduleCards" class="space-y-2.5">
+                <!-- Injected via JavaScript -->
             </div>
         </section>
 
-        <!-- Official Welcome & Vision -->
-        <section class="bg-teal-900/40 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-teal-800/50">
-            <h2 class="text-2xl font-bold text-white mb-4">Learn to be with Jesus from the people who actually were.</h2>
-            
-            <div class="space-y-4 text-teal-100/90 leading-relaxed text-sm md:text-base">
-                <p>
-                    Jesus doesn't just call us to follow Him from a distance—He invites us to be WITH Him, to become like Him, and to hand over every corner of our lives to His loving leadership. This session of SCG Discipleship is built around one simple, transformative idea: learning to Be WITH Jesus. When we learn to live in step with Him, we open the door for Him to shape us into who He created us to be.
-                </p>
-                <p>
-                    And here's what you'll discover along the way: drawing close to Jesus always draws you closer to His people. You were never meant to follow after Jesus alone. You were made to grow in community, leaning on other believers who spur you forward when the road gets hard.
-                </p>
-                <p>
-                    You're not the first to walk this road; you're joining a story already in motion. The book of Acts is where that story first comes to life. It's the thrilling, high-stakes account of the Church's birth: ordinary men and women who planted the first seeds of faith and watched them grow into a movement that would change the world forever.
-                </p>
-                <p>
-                    In this study, we're going straight to the source, tapping into the rich heritage the first generation of Christians left for us. We'll dig into their "acts"—the habits, the practices, the everyday choices that made them strong enough for the mission Jesus set before them. Walk with the Apostles. Learn from the Early Church. And discover how their example still shows us the way to live fully WITH Jesus today.
-                </p>
+        <!-- TAB 2: SHARING & M.I.A. MASTER BOARD -->
+        <section id="tab-roster" class="hidden space-y-4">
+            <div class="bg-slate-900 rounded-2xl p-5 border border-slate-800 shadow-lg">
+                <h3 class="text-base font-bold text-white mb-1">Weekly Roles & Attendance Overview</h3>
+                <p class="text-xs text-slate-400 mb-4">Quick glance at scheduled testimonies and absent members.</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead>
+                            <tr class="border-b border-slate-800 text-slate-400 font-bold uppercase">
+                                <th class="pb-2.5">Date</th>
+                                <th class="pb-2.5 text-teal-400">Sharing / Testimony</th>
+                                <th class="pb-2.5 text-amber-400">M.I.A. (Absent)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rosterTableBody" class="divide-y divide-slate-800/60 font-medium">
+                            <!-- Injected via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
-        <!-- Podcasts Section -->
-        <section>
-            <h2 class="text-lg font-bold text-teal-100 mb-3 px-2">Listen to the Daily Podcast</h2>
-            <div class="grid grid-cols-3 gap-3">
-                <a href="#" class="flex flex-col items-center justify-center gap-2 bg-teal-900/60 hover:bg-teal-800 border border-teal-700/50 rounded-xl p-4 transition-all duration-200 shadow-md transform hover:-translate-y-1">
-                    <span class="text-2xl">🍏</span>
-                    <span class="font-semibold text-xs text-teal-50">Apple</span>
-                </a>
-                <a href="#" class="flex flex-col items-center justify-center gap-2 bg-teal-900/60 hover:bg-teal-800 border border-teal-700/50 rounded-xl p-4 transition-all duration-200 shadow-md transform hover:-translate-y-1">
-                    <span class="text-2xl">🟢</span>
-                    <span class="font-semibold text-xs text-teal-50">Spotify</span>
-                </a>
-                <a href="#" class="flex flex-col items-center justify-center gap-2 bg-teal-900/60 hover:bg-teal-800 border border-teal-700/50 rounded-xl p-4 transition-all duration-200 shadow-md transform hover:-translate-y-1">
-                    <span class="text-2xl">▶️</span>
-                    <span class="font-semibold text-xs text-teal-50">YouTube</span>
-                </a>
+        <!-- TAB 3: PRAYER / FAST & PODCAST LINKS -->
+        <section id="tab-events" class="hidden space-y-4">
+            <!-- Group Fast & Prayer Card -->
+            <div class="bg-gradient-to-br from-slate-900 to-teal-950/40 rounded-2xl p-5 border border-teal-800/50 shadow-lg">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xl">🕊️</span>
+                    <h3 class="text-base font-bold text-white">Group Prayer & Fast Experience</h3>
+                </div>
+                <p class="text-xs text-teal-300 font-semibold mb-3">Saturday 10/3 – Sunday 10/4, 2026</p>
+                
+                <div class="space-y-2 text-xs text-slate-300 leading-relaxed bg-slate-950/60 p-3.5 rounded-xl border border-slate-800">
+                    <p>• <strong class="text-white">Fast Begins:</strong> Saturday, Oct 3 at 12:00 PM (Noon).</p>
+                    <p>• <strong class="text-white">Sunday Meeting:</strong> Regular morning meeting (9:00 AM – 10:30 AM).</p>
+                    <p>• <strong class="text-white">Prayer at Rossmoor Park:</strong> 10:45 AM – 1:00 PM after meeting.</p>
+                    <p>• <strong class="text-white">Break Fast:</strong> Lunch together at In-N-Out directly after prayer!</p>
+                </div>
             </div>
+
+            <!-- Serve Event -->
+            <div class="bg-slate-900 rounded-2xl p-5 border border-slate-800 shadow-lg">
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="text-xl">🤝</span>
+                    <h3 class="text-base font-bold text-white">Group Serve Experience</h3>
+                </div>
+                <p class="text-xs text-amber-400 font-semibold mb-2">Status: Date & Project TBD</p>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Our cohort will serve together either on church campus or with an outside partner. Check back here or in group chat for the official church registration link.
+                </p>
+            </div>
+
+            <!-- Official Podcast Links -->
+            <div class="bg-slate-900 rounded-2xl p-5 border border-slate-800 shadow-lg">
+                <h3 class="text-sm font-bold text-white mb-2">Daily Study Podcast</h3>
+                <p class="text-xs text-slate-400 mb-4">Follow along daily for audio commentary from pastors:</p>
+                <div class="grid grid-cols-3 gap-2 text-center text-xs font-semibold">
+                    <a href="#" class="bg-slate-800 hover:bg-teal-900/60 border border-slate-700 py-3 rounded-xl transition-all">🍏 Apple</a>
+                    <a href="#" class="bg-slate-800 hover:bg-teal-900/60 border border-slate-700 py-3 rounded-xl transition-all">🟢 Spotify</a>
+                    <a href="#" class="bg-slate-800 hover:bg-teal-900/60 border border-slate-700 py-3 rounded-xl transition-all">▶️ YouTube</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Results View (Hidden by default) -->
+        <section id="searchResultsContainer" class="hidden space-y-3">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-teal-400">Search Results</h2>
+            <div id="searchResults" class="space-y-2.5"></div>
         </section>
 
     </main>
 
-    <!-- Floating Bottom Navigation -->
-    <nav class="fixed bottom-0 w-full bg-slate-950/90 backdrop-blur-lg border-t border-teal-900/50 px-6 py-4 flex justify-around shadow-2xl">
-        <button class="text-teal-400 font-bold text-sm flex flex-col items-center transition-colors">
-            <span class="text-xl mb-1">📖</span> Overview
-        </button>
-        <button class="text-teal-600 hover:text-teal-300 font-medium text-sm flex flex-col items-center transition-colors">
-            <span class="text-xl mb-1">📅</span> Schedule
-        </button>
-        <button class="text-teal-600 hover:text-teal-300 font-medium text-sm flex flex-col items-center transition-colors">
-            <span class="text-xl mb-1">🔒</span> Portal
-        </button>
-    </nav>
+    <footer class="mt-12 text-center text-[11px] text-slate-500 max-w-md mx-auto px-4">
+        <p>Paul & Roy's Men's Cohort • Independent Study Companion</p>
+        <p class="mt-1">Not officially operated or endorsed by SCG Church.</p>
+    </footer>
 
+    <!-- Interactive Logic -->
+    <script>
+        const schedule = [
+            { week: 1, date: "9/13/2026", acts: "Intro", title: "Launch & Welcome to Acts", sharing: [], mia: [], special: "" },
+            { week: 2, date: "9/20/2026", acts: "Acts 1–2", title: "The Holy Spirit Arrives", sharing: ["Michael", "Bryan"], mia: [], special: "" },
+            { week: 3, date: "9/27/2026", acts: "Acts 3–6", title: "The Birth of the Church", sharing: ["Joe C.", "Nate"], mia: [], special: "" },
+            { week: 4, date: "10/4/2026", acts: "Acts 7–9", title: "Persecuted and Scattered", sharing: [], mia: ["Joe A.", "Joe C."], special: "🕊️ Fast starts Sat 10/3 at noon. Sun 10/4 prayer at Rossmoor Park (10:45-13:00) followed by In-N-Out lunch." },
+            { week: 5, date: "10/11/2026", acts: "Acts 9–11", title: "Good News for the Gentiles", sharing: [], mia: ["Nate", "Roy"], special: "" },
+            { week: 6, date: "10/18/2026", acts: "Acts 12–15", title: "The Mission", sharing: ["Zac"], mia: ["Roy"], special: "" },
+            { week: 7, date: "10/25/2026", acts: "Acts 15–17", title: "The Growing Church", sharing: ["Paul", "Roy"], mia: [], special: "" },
+            { week: 8, date: "11/1/2026", acts: "Acts 18–21", title: "The Established Church", sharing: [], mia: ["Paul"], special: "" },
+            { week: 9, date: "11/8/2026", acts: "Acts 21–25", title: "Opposition in Jerusalem", sharing: ["Johnny", "Joe A."], mia: [], special: "" },
+            { week: 10, date: "11/15/2026", acts: "Acts 25–28", title: "On to Rome (Celebration)", sharing: [], mia: [], special: "🎉 Final Cohort Celebration" },
+            { week: "Wrap", date: "11/21/2026", acts: "Weekend", title: "Saturday & Sunday Baptisms", sharing: [], mia: [], special: "Baptisms across weekend services" }
+        ];
+
+        function renderSchedule() {
+            const container = document.getElementById("scheduleCards");
+            container.innerHTML = schedule.map(item => `
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 transition-all hover:border-slate-700">
+                    <div class="flex justify-between items-start mb-1">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-teal-400">Week ${item.week} • ${item.date}</span>
+                            <h3 class="text-sm font-bold text-white">${item.title}</h3>
+                        </div>
+                        <span class="text-[11px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded border border-slate-700">${item.acts}</span>
+                    </div>
+
+                    ${(item.sharing.length || item.mia.length || item.special) ? `
+                        <div class="mt-2.5 pt-2.5 border-t border-slate-800/80 flex flex-wrap gap-2 text-xs">
+                            ${item.sharing.length ? `<span class="bg-teal-950/70 text-teal-300 border border-teal-800/60 px-2 py-0.5 rounded">🎤 Sharing: <strong>${item.sharing.join(', ')}</strong></span>` : ''}
+                            ${item.mia.length ? `<span class="bg-amber-950/60 text-amber-300 border border-amber-800/50 px-2 py-0.5 rounded">⚠️ M.I.A: ${item.mia.join(', ')}</span>` : ''}
+                            ${item.special ? `<p class="w-full text-xs text-slate-400 mt-1 italic">${item.special}</p>` : ''}
+                        </div>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        function renderRoster() {
+            const tbody = document.getElementById("rosterTableBody");
+            tbody.innerHTML = schedule.map(item => `
+                <tr class="hover:bg-slate-800/40 transition-colors">
+                    <td class="py-2.5 text-slate-300">${item.date}</td>
+                    <td class="py-2.5 text-teal-300 font-semibold">${item.sharing.length ? item.sharing.join(' / ') : '<span class="text-slate-600 font-normal">—</span>'}</td>
+                    <td class="py-2.5 text-amber-300">${item.mia.length ? item.mia.join(' / ') : '<span class="text-slate-600 font-normal">—</span>'}</td>
+                </tr>
+            `).join('');
+        }
+
+        function switchTab(tabName) {
+            ['schedule', 'roster', 'events'].forEach(t => {
+                document.getElementById(`tab-${t}`).classList.add('hidden');
+                document.getElementById(`tabBtn-${t}`).className = 'py-2.5 rounded-lg text-slate-400 hover:text-white transition-all text-center';
+            });
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            document.getElementById(`tabBtn-${tabName}`).className = 'py-2.5 rounded-lg bg-teal-600 text-white shadow-sm transition-all text-center';
+        }
+
+        // Live Member Search
+        document.getElementById("memberSearch").addEventListener("input", function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            const searchContainer = document.getElementById("searchResultsContainer");
+            const searchResults = document.getElementById("searchResults");
+            const mainTabs = ['tab-schedule', 'tab-roster', 'tab-events'];
+
+            if (!query) {
+                searchContainer.classList.add("hidden");
+                mainTabs.forEach(t => {
+                    if (document.getElementById(`tabBtn-${t.split('-')[1]}`).classList.contains('bg-teal-600')) {
+                        document.getElementById(t).classList.remove("hidden");
+                    }
+                });
+                return;
+            }
+
+            mainTabs.forEach(t => document.getElementById(t).classList.add("hidden"));
+            searchContainer.classList.remove("hidden");
+
+            const matches = schedule.filter(item => 
+                item.sharing.some(s => s.toLowerCase().includes(query)) ||
+                item.mia.some(m => m.toLowerCase().includes(query))
+            );
+
+            if (matches.length === 0) {
+                searchResults.innerHTML = `<div class="p-4 bg-slate-900 rounded-xl text-center text-xs text-slate-400 border border-slate-800">No scheduled events found for "${query}".</div>`;
+                return;
+            }
+
+            searchResults.innerHTML = matches.map(item => `
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs font-bold text-teal-400">Week ${item.week} (${item.date})</span>
+                        <span class="text-xs text-slate-400">${item.title}</span>
+                    </div>
+                    <div class="mt-2 text-xs flex gap-2">
+                        ${item.sharing.some(s => s.toLowerCase().includes(query)) ? `<span class="bg-teal-950 text-teal-300 px-2 py-0.5 rounded border border-teal-800 font-bold">🎤 Sharing</span>` : ''}
+                        ${item.mia.some(m => m.toLowerCase().includes(query)) ? `<span class="bg-amber-950 text-amber-300 px-2 py-0.5 rounded border border-amber-800 font-bold">⚠️ M.I.A. (Absent)</span>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        });
+
+        // Initialize view
+        renderSchedule();
+        renderRoster();
+    </script>
 </body>
 </html>
