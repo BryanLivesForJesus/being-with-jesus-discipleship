@@ -1,0 +1,15 @@
+﻿# Python / Conda
+__pycache__/
+*.py[cod]
+.env
+venv/
+*.conda
+
+# Local RAG & Marker Assets (Keep copyrighted scans private)
+/raw_scans/
+/marker_output/
+/discipleship_chroma_db/
+
+# OS files
+.DS_Store
+Thumbs.db
