@@ -137,10 +137,12 @@
         </div>
       </div>
 
-      <!-- SCRIPTURE READING SECTION -->
+      <!-- SCRIPTURE READING / CONTENT CONTAINER -->
       <div style="display: flex; flex-direction: column; gap: 8px;">
         <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">📖 Scripture Reading</div>
-        <div style="background: rgba(2,6,23,0.5); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px;">
+        
+        <!-- Active Uploaded Passage Box -->
+        <div id="activePassageBox" style="display: none; background: rgba(2,6,23,0.5); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 14px; flex-direction: column; gap: 8px;">
           <div style="font-size: 14px; line-height: 1.6; color: #dbe4ef;">
             Today's passage: <a id="inlineReftagLink" href="#" target="_blank" style="font-weight: 700; color: #5eead4; text-decoration: underline;"></a>
           </div>
@@ -148,16 +150,16 @@
             Hover or tap the passage link above to preview verses inline via Bible Gateway, or click through to open the full chapter.
           </p>
         </div>
-      </div>
 
-      <!-- PENDING UPLOAD NOTICE (Shown only for unuploaded days) -->
-      <div id="pendingNoticeBox" style="display: none; background: rgba(120,53,15,0.25); border: 1px solid rgba(251,191,36,0.4); border-radius: 14px; padding: 14px; color: #fde68a;">
-        <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px;">
-          <span>⏳</span><span>Content Digitization in Progress</span>
+        <!-- Pending Digitization Single Box -->
+        <div id="pendingNoticeBox" style="display: none; background: rgba(120,53,15,0.25); border: 1px solid rgba(251,191,36,0.4); border-radius: 14px; padding: 14px; color: #fde68a;">
+          <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px;">
+            <span>⏳</span><span>Content Digitization in Progress</span>
+          </div>
+          <p style="margin: 6px 0 0; font-size: 12px; color: #fef08a; line-height: 1.5;">
+            Today's passage and study prompts haven't been uploaded yet. Please be patient while we digitize the remaining workbook content! In the meantime, use the Bible Gateway link above to read the chapter focus.
+          </p>
         </div>
-        <p style="margin: 6px 0 0; font-size: 12px; color: #fef08a; line-height: 1.5;">
-          The questions and prompts for this day haven't been uploaded yet. Please be patient while we digitize the remaining workbook content! In the meantime, use the Bible Gateway link above to read the chapter.
-        </p>
       </div>
 
       <!-- THINK QUESTIONS -->
@@ -216,7 +218,6 @@
       return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(cleanPassage)}&version=${version}`;
     }
 
-    // Only uploaded days live here. Unuploaded days will cleanly render the pending notice.
     const studyDays = {
       "2-1": {
         title: "The Ascension",
@@ -324,7 +325,7 @@
       const here = todayPosition();
       const isToday = (here.week === currentWeek && here.day === currentDay);
 
-      // Header & Week Select
+      // Header & Week Selector
       document.getElementById("headerHuddleShort").textContent = huddle.targetSunday.replace("Sun, ", "Sun ");
       
       const selectEl = document.getElementById("weekSelect");
@@ -376,7 +377,7 @@
       const countdownText = fastAway > 1 ? `in ${fastAway} days` : fastAway === 1 ? "tomorrow" : fastAway === 0 ? "today" : "completed";
       document.getElementById("fastCountdownBadge").textContent = countdownText;
 
-      // 5-Day Pills (Dim if unuploaded)
+      // 5-Day Pills
       const pillContainer = document.getElementById("dayPillContainer");
       pillContainer.innerHTML = [1, 2, 3, 4, 5].map(n => {
         const isActive = (n === currentDay);
@@ -398,7 +399,7 @@
         `;
       }).join('');
 
-      // Active Study Day Data
+      // Day Data Check
       const key = `${currentWeek}-${currentDay}`;
       const dayData = studyDays[key];
       const hasUploadedData = !!dayData;
@@ -428,20 +429,21 @@
         `;
       }).join('');
 
-      // Scripture Reading Link
-      const reftagLink = document.getElementById("inlineReftagLink");
-      reftagLink.textContent = scriptureText;
-      reftagLink.href = bibleUrl;
-
-      // Content Display / Pending State
-      const pendingBox = document.getElementById("pendingNoticeBox");
+      // Toggle Single Container State
+      const activePassageBox = document.getElementById("activePassageBox");
+      const pendingNoticeBox = document.getElementById("pendingNoticeBox");
       const thinkSection = document.getElementById("thinkSection");
       const liveSection = document.getElementById("liveSection");
 
       if (hasUploadedData) {
-        pendingBox.style.display = "none";
+        activePassageBox.style.display = "flex";
+        pendingNoticeBox.style.display = "none";
         thinkSection.style.display = "flex";
         liveSection.style.display = "flex";
+
+        const reftagLink = document.getElementById("inlineReftagLink");
+        reftagLink.textContent = dayData.scripture;
+        reftagLink.href = dayData.bibleUrl;
 
         const thinkContainer = document.getElementById("thinkQuestionsContainer");
         thinkContainer.innerHTML = dayData.think.map((q, idx) => `
@@ -453,7 +455,8 @@
 
         document.getElementById("liveDifferentlyText").textContent = dayData.live;
       } else {
-        pendingBox.style.display = "block";
+        activePassageBox.style.display = "none";
+        pendingNoticeBox.style.display = "block";
         thinkSection.style.display = "none";
         liveSection.style.display = "none";
       }
