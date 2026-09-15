@@ -1,394 +1,453 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="./support.js"></script>
-  <!-- Bible Gateway Reftag Script for hover popups -->
+  <title>Being with Jesus | Paul & Roy's Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://www.biblegateway.com/public/link-to-us/tooltips/bglinks.js" type="text/javascript"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #0a0f18; color: #e7edf5; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #2dd4bf; text-decoration: none; }
+    a:hover { color: #5eead4; }
+    button, select { font-family: inherit; -webkit-tap-highlight-color: transparent; }
+    .tap:active { transform: scale(0.97); }
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
-<body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-body { margin:0; background:#0a0f18; font-family:'Plus Jakarta Sans',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
-a { color:#2dd4bf; text-decoration:none; }
-a:hover { color:#5eead4; }
-button { font-family:inherit; -webkit-tap-highlight-color:transparent; }
-select { font-family:inherit; }
-::-webkit-scrollbar { width:0; height:0; }
-.tap:active { transform:scale(0.97); }
-details > summary { list-style:none; }
-details > summary::-webkit-details-marker { display:none; }
-</style>
-</helmet>
-<div style="background:#0a0f18;color:#e7edf5;min-height:100vh;padding-bottom:104px">
+<body style="min-height: 100vh; padding-bottom: 104px;">
 
-  <!-- Header -->
-  <header style="position:sticky;top:0;z-index:40;background:rgba(10,15,24,0.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(30,41,59,0.8)">
-    <div style="max-width:520px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px">
-      <img src="Discipleship_logo.jpeg" alt="" style="height:38px;width:38px;object-fit:cover;border-radius:10px;border:1px solid rgba(45,212,191,0.25)" />
-      <div style="flex:1;min-width:0">
-        <div style="font-size:14px;font-weight:800;color:#fff;letter-spacing:-0.01em">Paul &amp; Roy's Group</div>
-        <div style="font-size:11px;color:#7c8ba1;font-weight:500">Being with Jesus · Sundays 9:00–10:30 AM</div>
+  <!-- Sticky Header -->
+  <header style="position: sticky; top: 0; z-index: 40; background: rgba(10,15,24,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(30,41,59,0.8);">
+    <div style="max-width: 520px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 12px;">
+      <img src="Discipleship_logo.jpeg" alt="Logo" style="height: 38px; width: 38px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(45,212,191,0.25);" onerror="this.style.display='none'" />
+      <div style="flex: 1; min-width: 0;">
+        <div style="font-size: 14px; font-weight: 800; color: #fff; letter-spacing: -0.01em;">Paul &amp; Roy's Group</div>
+        <div style="font-size: 11px; color: #7c8ba1; font-weight: 500;">Being with Jesus · Sundays 9:00–10:30 AM</div>
       </div>
-      <div style="display:flex;align-items:center;gap:6px;background:rgba(19,78,74,0.35);border:1px solid rgba(20,184,166,0.3);padding:6px 10px;border-radius:9999px;">
-        <span style="width:6px;height:6px;border-radius:50%;background:#2dd4bf;"></span>
-        <span style="font-size:11px;font-weight:700;color:#5eead4;font-family:'IBM Plex Mono',monospace;white-space:nowrap">{{ huddleShort }}</span>
+      <div style="display: flex; align-items: center; gap: 6px; background: rgba(19,78,74,0.35); border: 1px solid rgba(20,184,166,0.3); padding: 6px 10px; border-radius: 9999px;">
+        <span style="width: 6px; height: 6px; border-radius: 50%; background: #2dd4bf;"></span>
+        <span id="headerHuddleShort" style="font-size: 11px; font-weight: 700; color: #5eead4; font-family: 'IBM Plex Mono', monospace; white-space: nowrap;"></span>
       </div>
     </div>
   </header>
 
-  <main style="max-width:520px;margin:0 auto;padding:14px 16px;display:flex;flex-direction:column;gap:14px">
+  <main style="max-width: 520px; margin: 0 auto; padding: 14px 16px; display: flex; flex-direction: column; gap: 14px;">
 
-    <div style="display:flex;align-items:center;gap:8px">
-      <div style="position:relative;flex:1;min-width:0">
-        <select value="{{ week }}" onChange="{{ onWeekChange }}" style="width:100%;appearance:none;background:#111a28;border:1px solid #1e293b;color:#e7edf5;font-size:14px;font-weight:700;border-radius:14px;padding:13px 40px 13px 14px;outline:none">
-          <sc-for list="{{ weekOptions }}" as="w" hint-placeholder-count="10">
-            <option value="{{ w.value }}">{{ w.label }}</option>
-          </sc-for>
-        </select>
-        <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#5eead4;font-size:11px;pointer-events:none">▼</span>
+    <!-- Week Selector Bar -->
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="position: relative; flex: 1; min-width: 0;">
+        <select id="weekSelect" onchange="setWeek(parseInt(this.value))" style="width: 100%; appearance: none; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; font-size: 14px; font-weight: 700; border-radius: 14px; padding: 13px 40px 13px 14px; outline: none; cursor: pointer;"></select>
+        <span style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #5eead4; font-size: 11px; pointer-events: none;">▼</span>
       </div>
-      <button class="tap" onClick="{{ jumpToToday }}" style="{{ todayBtnStyle }}">Today</button>
+      <button id="todayBtn" class="tap" onclick="jumpToToday()" style="min-height: 48px; padding: 0 16px; border-radius: 14px; font-size: 13px; font-weight: 800; cursor: pointer; white-space: nowrap; border: 1px solid #1e293b;">Today</button>
     </div>
 
-    <!-- Sunday Huddle -->
-    <section style="background:linear-gradient(145deg,#111d28,#0d1520 55%,rgba(6,54,52,0.55));border:1px solid rgba(20,184,166,0.22);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:12px;">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+    <!-- Sunday Huddle Card -->
+    <section style="background: linear-gradient(145deg,#111d28,#0d1520 55%,rgba(6,54,52,0.55)); border: 1px solid rgba(20,184,166,0.22); border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;">
         <div>
-          <div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#5eead4">Sunday Huddle</div>
-          <div style="font-size:17px;font-weight:800;color:#fff;margin-top:3px;letter-spacing:-0.01em">{{ huddle.targetSunday }}</div>
-          <div style="font-size:12px;color:#8ea0b6;margin-top:1px">{{ huddle.theme }} · {{ huddle.acts }}</div>
+          <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">Sunday Huddle</div>
+          <div id="huddleTargetSunday" style="font-size: 17px; font-weight: 800; color: #fff; margin-top: 3px; letter-spacing: -0.01em;"></div>
+          <div id="huddleSubtitle" style="font-size: 12px; color: #8ea0b6; margin-top: 1px;"></div>
         </div>
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5eead4;background:rgba(2,6,23,0.5);border:1px solid rgba(20,184,166,0.2);padding:6px 12px;border-radius:9999px;white-space:nowrap">9:00 AM</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5eead4; background: rgba(2,6,23,0.5); border: 1px solid rgba(20,184,166,0.2); padding: 6px 12px; border-radius: 9999px; white-space: nowrap;">9:00 AM</div>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div style="background:rgba(2,6,23,0.55);border:1px solid rgba(30,41,59,0.9);border-radius:14px;padding:11px">
-          <div style="font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#2dd4bf">🎤 Sharing</div>
-          <div style="font-size:14px;font-weight:700;color:#f1f5f9;margin-top:4px;line-height:1.3">{{ sharingText }}</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+        <div style="background: rgba(2,6,23,0.55); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 11px;">
+          <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #2dd4bf;">🎤 Sharing</div>
+          <div id="huddleSharing" style="font-size: 14px; font-weight: 700; color: #f1f5f9; margin-top: 4px; line-height: 1.3;"></div>
         </div>
-        <div style="background:rgba(2,6,23,0.55);border:1px solid rgba(30,41,59,0.9);border-radius:14px;padding:11px">
-          <div style="font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#fbbf24">⚠️ Absent</div>
-          <div style="font-size:14px;font-weight:700;color:#e2e8f0;margin-top:4px;line-height:1.3">{{ miaText }}</div>
+        <div style="background: rgba(2,6,23,0.55); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 11px;">
+          <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fbbf24;">⚠️ Absent</div>
+          <div id="huddleAbsent" style="font-size: 14px; font-weight: 700; color: #e2e8f0; margin-top: 4px; line-height: 1.3;"></div>
         </div>
       </div>
 
-      <sc-if value="{{ hasSpecial }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;gap:9px;align-items:flex-start;background:rgba(6,78,74,0.4);border:1px solid rgba(20,184,166,0.35);border-radius:14px;padding:11px;">
-          <span style="font-size:14px;line-height:1.2">📌</span>
-          <div style="font-size:12.5px;color:#a7f3e4;line-height:1.5">{{ huddle.special }}</div>
-        </div>
-      </sc-if>
+      <div id="huddleSpecialBox" style="display: none; gap: 9px; align-items: flex-start; background: rgba(6,78,74,0.4); border: 1px solid rgba(20,184,166,0.35); border-radius: 14px; padding: 11px;">
+        <span style="font-size: 14px; line-height: 1.2;">📌</span>
+        <div id="huddleSpecialText" style="font-size: 12.5px; color: #a7f3e4; line-height: 1.5;"></div>
+      </div>
 
       <details>
-        <summary class="tap" style="cursor:pointer;font-size:12px;font-weight:700;color:#8ea0b6;display:flex;align-items:center;justify-content:space-between;padding:9px 11px;background:rgba(2,6,23,0.4);border:1px solid rgba(30,41,59,0.8);border-radius:14px;min-height:44px;box-sizing:border-box">
-          <span>Roster &amp; group experiences</span><span style="color:#2dd4bf">▾</span>
+        <summary class="tap" style="cursor: pointer; font-size: 12px; font-weight: 700; color: #8ea0b6; display: flex; align-items: center; justify-content: space-between; padding: 9px 11px; background: rgba(2,6,23,0.4); border: 1px solid rgba(30,41,59,0.8); border-radius: 14px; min-height: 44px; box-sizing: border-box;">
+          <span>Roster &amp; group experiences</span><span style="color: #2dd4bf;">▾</span>
         </summary>
-        <div style="margin-top:9px;display:flex;flex-direction:column;gap:9px">
-          <div style="display:flex;flex-wrap:wrap;gap:6px">
-            <sc-for list="{{ roster }}" as="m" hint-placeholder-count="9">
-              <span style="{{ m.style }}">{{ m.name }}</span>
-            </sc-for>
-          </div>
-          <div style="font-size:11.5px;color:#7c8ba1;line-height:1.55;border-top:1px solid rgba(30,41,59,0.8);padding-top:9px">
-            <div><span style="color:#cbd5e1;font-weight:700">Serve Experience</span> — date &amp; project TBD; registration through church channels.</div>
-            <div style="margin-top:4px"><span style="color:#cbd5e1;font-weight:700">Baptisms</span> — Sat 11/21 &amp; Sun 11/22.</div>
+        <div style="margin-top: 9px; display: flex; flex-direction: column; gap: 9px;">
+          <div id="rosterBadges" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+          <div style="font-size: 11.5px; color: #7c8ba1; line-height: 1.55; border-top: 1px solid rgba(30,41,59,0.8); padding-top: 9px;">
+            <div><span style="color: #cbd5e1; font-weight: 700;">Serve Experience</span> — date &amp; project TBD; registration through church channels.</div>
+            <div style="margin-top: 4px;"><span style="color: #cbd5e1; font-weight: 700;">Baptisms</span> — Sat 11/21 &amp; Sun 11/22.</div>
           </div>
         </div>
       </details>
     </section>
 
-    <!-- Group Prayer & Fast Card -->
-    <section style="background:linear-gradient(145deg,rgba(6,78,74,0.42),rgba(13,21,32,0.9));border:1px solid rgba(20,184,166,0.3);border-radius:20px;padding:16px;">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+    <!-- Prayer & Fast Banner -->
+    <section style="background: linear-gradient(145deg,rgba(6,78,74,0.42),rgba(13,21,32,0.9)); border: 1px solid rgba(20,184,166,0.3); border-radius: 20px; padding: 16px;">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;">
         <div>
-          <div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#5eead4">🕊️ Prayer &amp; Fast</div>
-          <div style="font-size:17px;font-weight:800;color:#fff;margin-top:4px;letter-spacing:-0.01em">{{ fastDate }}</div>
+          <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">🕊️ Prayer &amp; Fast</div>
+          <div style="font-size: 17px; font-weight: 800; color: #fff; margin-top: 4px; letter-spacing: -0.01em;">Sat Oct 3 – Sun Oct 4</div>
         </div>
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5eead4;background:rgba(2,6,23,0.45);border:1px solid rgba(20,184,166,0.25);padding:6px 12px;border-radius:9999px;white-space:nowrap">{{ fastCountdown }}</div>
+        <div id="fastCountdownBadge" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5eead4; background: rgba(2,6,23,0.45); border: 1px solid rgba(20,184,166,0.25); padding: 6px 12px; border-radius: 9999px; white-space: nowrap;"></div>
       </div>
-      <div style="margin-top:12px;display:flex;flex-direction:column;gap:9px">
-        <div style="display:flex;gap:10px;align-items:flex-start">
-          <span style="width:6px;height:6px;border-radius:50%;background:#2dd4bf;margin-top:7px;flex:none;"></span>
-          <span style="font-size:13px;line-height:1.5;color:#cfe8e2">{{ fastStart }}</span>
+      <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 9px;">
+        <div style="display: flex; gap: 10px; align-items: flex-start;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: #2dd4bf; margin-top: 7px; flex: none;"></span>
+          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Fast begins Sat 10/3 at 12:00 PM.</span>
         </div>
-        <div style="display:flex;gap:10px;align-items:flex-start">
-          <span style="width:6px;height:6px;border-radius:50%;background:#2dd4bf;margin-top:7px;flex:none;"></span>
-          <span style="font-size:13px;line-height:1.5;color:#cfe8e2">{{ fastPrayer }}</span>
+        <div style="display: flex; gap: 10px; align-items: flex-start;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: #2dd4bf; margin-top: 7px; flex: none;"></span>
+          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Sun 10/4 group prayer at Rossmoor Park, 10:45–1:00.</span>
         </div>
-        <div style="display:flex;gap:10px;align-items:flex-start">
-          <span style="width:6px;height:6px;border-radius:50%;background:#fbbf24;margin-top:7px;flex:none;"></span>
-          <span style="font-size:13px;line-height:1.5;color:#cfe8e2">{{ fastBreak }}</span>
+        <div style="display: flex; gap: 10px; align-items: flex-start;">
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: #fbbf24; margin-top: 7px; flex: none;"></span>
+          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">We break the fast together — lunch at La Capilla after Sunday service.</span>
         </div>
       </div>
     </section>
 
-    <!-- Daily Pill Navigation -->
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:7px">
-      <sc-for list="{{ dayPills }}" as="p" hint-placeholder-count="5">
-        <button class="tap" onClick="{{ p.onClick }}" style="{{ p.style }}">
-          <span style="font-size:9px;font-weight:700;letter-spacing:0.1em;opacity:0.7">{{ p.dow }}</span>
-          <span style="font-size:15px;font-weight:800">{{ p.n }}</span>
-        </button>
-      </sc-for>
-    </div>
+    <!-- Day Stepper Pills -->
+    <div id="dayPillContainer" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px;"></div>
 
     <!-- Daily Study Focus Card -->
-    <section style="background:#111a28;border:1px solid #1e293b;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:16px;">
-
-      <div style="display:flex;flex-direction:column;gap:7px">
-        <div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#5eead4">Week {{ week }} · Day {{ day }}</div>
-        <h2 style="margin:0;font-size:22px;line-height:1.2;font-weight:800;color:#fff;letter-spacing:-0.02em;text-wrap:pretty">{{ study.title }}</h2>
-        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5eead4;background:rgba(6,78,74,0.35);border:1px solid rgba(20,184,166,0.28);padding:6px 12px;border-radius:9999px">{{ study.scripture }}</span>
-          <a href="{{ study.bibleUrl }}" target="_blank" class="tap" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#9fb0c5;border:1px solid #1e293b;background:rgba(2,6,23,0.4);padding:6px 12px;border-radius:9999px">Read on Bible Gateway ↗</a>
+    <section style="background: #111a28; border: 1px solid #1e293b; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 16px;">
+      
+      <div style="display: flex; flex-direction: column; gap: 7px;">
+        <div id="studyDayHeading" style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;"></div>
+        <h2 id="studyTitle" style="margin: 0; font-size: 22px; line-height: 1.2; font-weight: 800; color: #fff; letter-spacing: -0.02em;"></h2>
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span id="studyScriptureBadge" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5eead4; background: rgba(6,78,74,0.35); border: 1px solid rgba(20,184,166,0.28); padding: 6px 12px; border-radius: 9999px;"></span>
+          <a id="studyBibleLink" href="#" target="_blank" class="tap" style="display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; color: #9fb0c5; border: 1px solid #1e293b; background: rgba(2,6,23,0.4); padding: 6px 12px; border-radius: 9999px;">Read on Bible Gateway ↗</a>
         </div>
       </div>
 
       <!-- Podcast Launcher -->
-      <div style="background:rgba(2,6,23,0.5);border:1px solid rgba(30,41,59,0.9);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:10px">
-        <a href="{{ platform.url }}" target="_blank" class="tap" style="display:flex;align-items:center;justify-content:center;gap:9px;background:#0d9488;color:#fff;font-size:15px;font-weight:800;padding:0 16px;height:52px;border-radius:14px;">
-          <span style="font-size:16px">▶</span><span>{{ platform.cta }}</span>
-        </a>
-        <div style="display:flex;align-items:center;gap:7px">
-          <span style="font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#64748b;flex:1">Default player</span>
-          <sc-for list="{{ platformBtns }}" as="b" hint-placeholder-count="4">
-            <button class="tap" onClick="{{ b.onClick }}" title="{{ b.title }}" style="{{ b.style }}">{{ b.icon }}</button>
-          </sc-for>
+      <div style="background: rgba(2,6,23,0.5); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 10px;">
+        <a id="mainPodcastCTA" href="#" target="_blank" class="tap" style="display: flex; align-items: center; justify-content: center; gap: 9px; background: #0d9488; color: #fff; font-size: 15px; font-weight: 800; padding: 0 16px; height: 52px; border-radius: 14px;"></a>
+        <div style="display: flex; align-items: center; gap: 7px;">
+          <span style="font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #64748b; flex: 1;">Default player</span>
+          <div id="playerButtons" style="display: flex; gap: 6px;"></div>
         </div>
       </div>
 
-      <!-- Scripture Reading Section with Reftag Link -->
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#5eead4">📖 Scripture Reading</div>
-        <div style="background:rgba(2,6,23,0.5);border:1px solid rgba(30,41,59,0.9);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px">
-          <div style="font-size:14px;line-height:1.6;color:#dbe4ef">
-            Today's passage: <a href="{{ study.bibleUrl }}" target="_blank" style="font-weight:700;color:#5eead4;text-decoration:underline">{{ study.scripture }}</a>
+      <!-- Scripture Reading Section with Reftag Tooltip Trigger -->
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">📖 Scripture Reading</div>
+        <div style="background: rgba(2,6,23,0.5); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-size: 14px; line-height: 1.6; color: #dbe4ef;">
+            Today's passage: <a id="inlineReftagLink" href="#" target="_blank" style="font-weight: 700; color: #5eead4; text-decoration: underline;"></a>
           </div>
-          <p style="margin:0;font-size:12px;color:#8ea0b6;line-height:1.5">
+          <p style="margin: 0; font-size: 12px; color: #8ea0b6; line-height: 1.5;">
             Hover or tap the passage link above to preview verses inline via Bible Gateway, or click through to open the full chapter.
           </p>
         </div>
       </div>
 
-      <!-- THINK QUESTIONS -->
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#5eead4">🤔 Think</div>
-        <sc-for list="{{ study.think }}" as="q" hint-placeholder-count="3">
-          <div style="display:flex;gap:11px;align-items:flex-start;background:rgba(2,6,23,0.45);border:1px solid rgba(30,41,59,0.8);border-radius:14px;padding:13px">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#2dd4bf;padding-top:2px">0{{ q.n }}</span>
-            <p style="margin:0;font-size:14.5px;line-height:1.6;color:#dbe4ef;text-wrap:pretty">{{ q.text }}</p>
-          </div>
-        </sc-for>
+      <!-- Think Questions -->
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">🤔 Think</div>
+        <div id="thinkQuestionsContainer" style="display: flex; flex-direction: column; gap: 8px;"></div>
       </div>
 
-      <!-- LIVE DIFFERENTLY -->
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#fbbf24">🌱 Live Differently</div>
-        <div style="background:linear-gradient(160deg,rgba(120,53,15,0.18),rgba(2,6,23,0.45));border:1px solid rgba(251,191,36,0.22);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:11px;">
-          <p style="margin:0;font-size:14.5px;line-height:1.6;color:#dbe4ef;text-wrap:pretty">{{ study.live }}</p>
-          <div style="display:flex;gap:9px;align-items:center;border-top:1px solid rgba(30,41,59,0.9);padding-top:11px">
-            <span style="font-size:13px">🙏</span>
-            <span style="font-size:12.5px;color:#7fd8c8;line-height:1.5">Close your time with God in quiet prayer.</span>
+      <!-- Live Differently -->
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #fbbf24;">🌱 Live Differently</div>
+        <div style="background: linear-gradient(160deg,rgba(120,53,15,0.18),rgba(2,6,23,0.45)); border: 1px solid rgba(251,191,36,0.22); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 11px;">
+          <p id="liveDifferentlyText" style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #dbe4ef;"></p>
+          <div style="display: flex; gap: 9px; align-items: center; border-top: 1px solid rgba(30,41,59,0.9); padding-top: 11px;">
+            <span style="font-size: 13px;">🙏</span>
+            <span style="font-size: 12.5px; color: #7fd8c8; line-height: 1.5;">Close your time with God in quiet prayer.</span>
           </div>
         </div>
       </div>
+
     </section>
 
-    <div style="text-align:center;padding:2px 0 6px">
-      <a href="https://beacons.ai/scgdiscipleship" target="_blank" style="font-size:11.5px;color:#5b6b81">SCG Media Hub ↗</a>
+    <div style="text-align: center; padding: 2px 0 6px;">
+      <a href="https://beacons.ai/scgdiscipleship" target="_blank" style="font-size: 11.5px; color: #5b6b81;">SCG Media Hub ↗</a>
     </div>
+
   </main>
 
-  <!-- Bottom Navigation -->
-  <nav style="position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(10,15,24,0.9);backdrop-filter:blur(18px);border-top:1px solid rgba(30,41,59,0.9);padding:10px 16px calc(10px + env(safe-area-inset-bottom))">
-    <div style="max-width:520px;margin:0 auto;display:flex;gap:10px">
-      <button class="tap" onClick="{{ prevDay }}" style="flex:1;min-height:52px;background:#151f2e;border:1px solid #243347;color:#9fb0c5;font-size:14px;font-weight:700;border-radius:14px;cursor:pointer">← Previous</button>
-      <button class="tap" onClick="{{ nextDay }}" style="flex:1.4;min-height:52px;background:#0d9488;border:1px solid #14b8a6;color:#fff;font-size:15px;font-weight:800;border-radius:14px;cursor:pointer;">{{ nextLabel }} →</button>
+  <!-- Fixed Bottom Navigation -->
+  <nav style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: rgba(10,15,24,0.9); backdrop-filter: blur(18px); border-top: 1px solid rgba(30,41,59,0.9); padding: 10px 16px calc(10px + env(safe-area-inset-bottom));">
+    <div style="max-width: 520px; margin: 0 auto; display: flex; gap: 10px;">
+      <button class="tap" onclick="navigateDay(-1)" style="flex: 1; min-height: 52px; background: #151f2e; border: 1px solid #243347; color: #9fb0c5; font-size: 14px; font-weight: 700; border-radius: 14px; cursor: pointer;">← Previous</button>
+      <button id="nextBtn" class="tap" onclick="navigateDay(1)" style="flex: 1.4; min-height: 52px; background: #0d9488; border: 1px solid #14b8a6; color: #fff; font-size: 15px; font-weight: 800; border-radius: 14px; cursor: pointer;">Next Day →</button>
     </div>
   </nav>
-</div>
 
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:932},&quot;fastDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Sat Oct 3 – Sun Oct 4&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prayer &amp; Fast&quot;},&quot;fastDateISO&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2026-10-03&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prayer &amp; Fast&quot;}}">
-const cohortSchedule = {
-  1:{targetSunday:"Sun, Sep 13",iso:"2026-09-13",theme:"Welcome to Acts",acts:"Overview",sharing:[],mia:[],special:"Group Kickoff — welcome & overview of the 10 weeks."},
-  2:{targetSunday:"Sun, Sep 20",iso:"2026-09-20",theme:"The Holy Spirit Arrives",acts:"Acts 1–2",sharing:["Michael","Bryan"],mia:[],special:""},
-  3:{targetSunday:"Sun, Sep 27",iso:"2026-09-27",theme:"The Birth of the Church",acts:"Acts 3–6",sharing:["Joe C.","Nate"],mia:[],special:""},
-  4:{targetSunday:"Sun, Oct 4",iso:"2026-10-04",theme:"Persecuted and Scattered",acts:"Acts 7–9",sharing:[],mia:["Joe A.","Joe C."],special:"🕊️ Group Prayer & Fast. Fast begins Sat 10/3 @ 12 PM. Sun 10/4 prayer at Rossmoor Park (10:45–1:00), then we break the fast together with lunch at La Capilla after Sunday service."},
-  5:{targetSunday:"Sun, Oct 11",iso:"2026-10-11",theme:"Good News for the Gentiles",acts:"Acts 9–11",sharing:[],mia:["Nate","Roy"],special:""},
-  6:{targetSunday:"Sun, Oct 18",iso:"2026-10-18",theme:"The Mission",acts:"Acts 12–15",sharing:["Zac"],mia:["Roy"],special:""},
-  7:{targetSunday:"Sun, Oct 25",iso:"2026-10-25",theme:"The Growing Church",acts:"Acts 15–17",sharing:["Paul","Roy"],mia:[],special:""},
-  8:{targetSunday:"Sun, Nov 1",iso:"2026-11-01",theme:"The Established Church",acts:"Acts 18–21",sharing:[],mia:["Paul"],special:""},
-  9:{targetSunday:"Sun, Nov 8",iso:"2026-11-08",theme:"Opposition in Jerusalem",acts:"Acts 21–25",sharing:["Johnny","Joe A."],mia:[],special:""},
-  10:{targetSunday:"Sun, Nov 15",iso:"2026-11-15",theme:"On to Rome (Celebration)",acts:"Acts 25–28",sharing:[],mia:[],special:"🎉 Celebration wrap-up. Baptism services the following weekend, 11/21–11/22."}
-};
+  <script>
+    const cohortSchedule = {
+      1: { targetSunday: "Sun, Sep 13", iso: "2026-09-13", theme: "Welcome to Acts", acts: "Overview", sharing: [], mia: [], special: "Group Kickoff — welcome & overview of the 10 weeks." },
+      2: { targetSunday: "Sun, Sep 20", iso: "2026-09-20", theme: "The Holy Spirit Arrives", acts: "Acts 1–2", sharing: ["Michael", "Bryan"], mia: [], special: "" },
+      3: { targetSunday: "Sun, Sep 27", iso: "2026-09-27", theme: "The Birth of the Church", acts: "Acts 3–6", sharing: ["Joe C.", "Nate"], mia: [], special: "" },
+      4: { targetSunday: "Sun, Oct 4", iso: "2026-10-04", theme: "Persecuted and Scattered", acts: "Acts 7–9", sharing: [], mia: ["Joe A.", "Joe C."], special: "🕊️ Group Prayer & Fast. Fast begins Sat 10/3 @ 12 PM. Sun 10/4 prayer at Rossmoor Park (10:45–1:00), then lunch at La Capilla after Sunday service." },
+      5: { targetSunday: "Sun, Oct 11", iso: "2026-10-11", theme: "Good News for the Gentiles", acts: "Acts 9–11", sharing: [], mia: ["Nate", "Roy"], special: "" },
+      6: { targetSunday: "Sun, Oct 18", iso: "2026-10-18", theme: "The Mission", acts: "Acts 12–15", sharing: ["Zac"], mia: ["Roy"], special: "" },
+      7: { targetSunday: "Sun, Oct 25", iso: "2026-10-25", theme: "The Growing Church", acts: "Acts 15–17", sharing: ["Paul", "Roy"], mia: [], special: "" },
+      8: { targetSunday: "Sun, Nov 1", iso: "2026-11-01", theme: "The Established Church", acts: "Acts 18–21", sharing: [], mia: ["Paul"], special: "" },
+      9: { targetSunday: "Sun, Nov 8", iso: "2026-11-08", theme: "Opposition in Jerusalem", acts: "Acts 21–25", sharing: ["Johnny", "Joe A."], mia: [], special: "" },
+      10: { targetSunday: "Sun, Nov 15", iso: "2026-11-15", theme: "On to Rome (Celebration)", acts: "Acts 25–28", sharing: [], mia: [], special: "🎉 Celebration wrap-up. Baptism services the following weekend, 11/21–11/22." }
+    };
 
-const ROSTER = ["Paul","Roy","Michael","Bryan","Joe A.","Joe C.","Nate","Zac","Johnny"];
-const LEADERS = ["Paul","Roy"];
+    const ROSTER = ["Paul", "Roy", "Michael", "Bryan", "Joe A.", "Joe C.", "Nate", "Zac", "Johnny"];
+    const LEADERS = ["Paul", "Roy"];
 
-function makeBibleGatewayUrl(passage, version = "NIV") {
-  const cleanPassage = passage.replace(/–/g, "-").replace(/—/g, "-");
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(cleanPassage)}&version=${version}`;
-}
-
-const studyDays = {
-  "2-1": {
-    title: "The Ascension",
-    scripture: "Acts 1:1–11",
-    bibleUrl: makeBibleGatewayUrl("Acts 1:1-11", "NIV"),
-    think: [
-      "What stood out to you from these verses? What was familiar? What was new or interesting?",
-      "What questions came up for you as you read?",
-      "What did you learn, realize, or remember about Jesus as you read?"
-    ],
-    live: "Look back over our teaching, the Scripture you've read, and your answers above. What do you sense God is asking you to do or change in your life today?"
-  },
-  "2-2": {
-    title: "Matthias Chosen",
-    scripture: "Acts 1:12–26",
-    bibleUrl: makeBibleGatewayUrl("Acts 1:12-26", "NIV"),
-    think: [
-      "Notice the emphasis on persistent, unified prayer before any major decision was made.",
-      "Why was it critical that the new leader had walked with Jesus from the beginning?",
-      "Where in your life do you need to pause and pray before taking the next step?"
-    ],
-    live: "Commit 5 minutes today to pray specifically for unity among the men in our group."
-  }
-};
-
-const platformData = {
-  spotify:{cta:"Listen on Spotify",icon:"🟢",title:"Spotify",url:"https://open.spotify.com/show/6QlVAGJQayupe8KSleegNG"},
-  apple:{cta:"Listen on Apple",icon:"🍏",title:"Apple Podcasts",url:"https://podcasts.apple.com/us/podcast/being-with-jesus-podcast-scg-discipleship/id6811618382?at=1000l3bbu&itsct=podcast_box&itscg=30200&ls=1"},
-  youtube:{cta:"Watch on YouTube",icon:"▶️",title:"YouTube",url:"https://www.youtube.com/playlist?list=PLJ8lzqX55j04"},
-  subsplash:{cta:"Open in SCG App",icon:"📱",title:"SCG App",url:"https://subsplash.com/u/seacoastgrace/media/l/fpry94s-being-with-jesus-scg-discipleship"}
-};
-
-const DOW = ["MON","TUE","WED","THU","FRI"];
-
-function todayPosition() {
-  const now = new Date();
-  const t = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-  const keys = Object.keys(cohortSchedule).map(Number);
-  for (const w of keys) {
-    const [y, m, d] = cohortSchedule[w].iso.split("-").map(Number);
-    const sun = new Date(y, m - 1, d).getTime();
-    const mon = sun - 6 * 86400000;
-    if (t >= mon && t <= sun) {
-      const idx = Math.round((t - mon) / 86400000);
-      return { week: w, day: Math.min(Math.max(idx + 1, 1), 5) };
+    function makeBibleGatewayUrl(passage, version = "NIV") {
+      const cleanPassage = passage.replace(/–/g, "-").replace(/—/g, "-");
+      return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(cleanPassage)}&version=${version}`;
     }
-    if (t < mon) return { week: w, day: 1 };
-  }
-  return { week: 10, day: 5 };
-}
 
-class Component extends DCLogic {
-  state = { week: todayPosition().week, day: todayPosition().day, platform: "spotify" };
-
-  scanBibleGatewayLinks() {
-    setTimeout(() => {
-      if (window.BGLinks && typeof window.BGLinks.linkVerses === "function") {
-        window.BGLinks.version = "NIV";
-        window.BGLinks.linkVerses();
+    const studyDays = {
+      "2-1": {
+        title: "The Ascension",
+        scripture: "Acts 1:1–11",
+        bibleUrl: makeBibleGatewayUrl("Acts 1:1-11", "NIV"),
+        think: [
+          "What stood out to you from these verses? What was familiar? What was new or interesting?",
+          "What questions came up for you as you read?",
+          "What did you learn, realize, or remember about Jesus as you read?"
+        ],
+        live: "Look back over our teaching, the Scripture you've read, and your answers above. What do you sense God is asking you to do or change in your life today?"
+      },
+      "2-2": {
+        title: "Matthias Chosen",
+        scripture: "Acts 1:12–26",
+        bibleUrl: makeBibleGatewayUrl("Acts 1:12-26", "NIV"),
+        think: [
+          "Notice the emphasis on persistent, unified prayer before any major decision was made.",
+          "Why was it critical that the new leader had walked with Jesus from the beginning?",
+          "Where in your life do you need to pause and pray before taking the next step?"
+        ],
+        live: "Commit 5 minutes today to pray specifically for unity among the men in our group."
       }
-    }, 50);
-  }
-
-  componentDidMount() {
-    try { 
-      const p = localStorage.getItem("bwj.platform"); 
-      if (p && platformData[p]) this.setState({ platform: p }); 
-    } catch (e) {}
-    this.scanBibleGatewayLinks();
-  }
-
-  componentDidUpdate() {
-    this.scanBibleGatewayLinks();
-  }
-
-  navigate = (dir) => {
-    const { week, day } = this.state;
-    const n = day + dir;
-    if (n >= 1 && n <= 5) this.setState({ day: n });
-    else if (n > 5 && week < 10) this.setState({ week: week + 1, day: 1 });
-    else if (n < 1 && week > 1) this.setState({ week: week - 1, day: 5 });
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  setPlatform = (p) => { 
-    try { localStorage.setItem("bwj.platform", p); } catch (e) {} 
-    this.setState({ platform: p }); 
-  };
-
-  renderVals() {
-    const { week, day, platform } = this.state;
-    const huddle = cohortSchedule[week];
-    const here = todayPosition();
-    const now = new Date();
-    const isToday = here.week === week && here.day === day;
-    const d = studyDays[week + "-" + day];
-
-    const fallbackScripture = huddle.acts === "Overview" ? "Acts 1" : huddle.acts;
-    const study = d ? { ...d, think: d.think.map((text, i) => ({ n: i + 1, text })) } : {
-      title: "Reading in preparation",
-      scripture: fallbackScripture,
-      bibleUrl: makeBibleGatewayUrl(fallbackScripture, "NIV"),
-      think: [
-        { n: 1, text: "What stood out to you from these verses? What was familiar? What was new or interesting?" },
-        { n: 2, text: "What questions came up for you as you read?" },
-        { n: 3, text: "What did you learn, realize, or remember about Jesus as you read?" }
-      ],
-      live: "Look back over the Scripture you've read and your answers above. What do you sense God is asking you to do or change in your life today?"
     };
 
-    const pill = (active, has, today) => "display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:52px;border-radius:14px;cursor:pointer;transition:all .15s;" +
-      (active ? "background:#0d9488;color:#fff;border:1px solid #2dd4bf;"
-        : "background:#111a28;color:" + (has ? "#9fb0c5" : "#4f6076") + ";border:1px solid " + (today ? "rgba(45,212,191,.45)" : "#1e293b") + ";");
-
-    const fastISO = this.props.fastDateISO ?? "2026-10-03";
-    const [fy, fm, fd] = fastISO.split("-").map(Number);
-    const fastAway = Math.round((new Date(fy, fm - 1, fd) - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
-
-    return {
-      week, day, huddle, study,
-      fastDate: this.props.fastDate ?? "Sat Oct 3 – Sun Oct 4",
-      fastCountdown: fastAway > 1 ? "in " + fastAway + " days" : fastAway === 1 ? "tomorrow" : fastAway === 0 ? "today" : "completed",
-      fastStart: "Fast begins Sat 10/3 at 12:00 PM.",
-      fastPrayer: "Sun 10/4 group prayer at Rossmoor Park, 10:45–1:00.",
-      fastBreak: "We break the fast together — lunch at La Capilla after Sunday service.",
-      huddleShort: huddle.targetSunday.replace("Sun, ", "Sun "),
-      sharingText: huddle.sharing.length ? huddle.sharing.join(" · ") : "No one scheduled",
-      miaText: huddle.mia.length ? huddle.mia.join(" · ") : "All present",
-      hasSpecial: !!huddle.special,
-      roster: ROSTER.map(name => ({ name: LEADERS.includes(name) ? name + " ★" : name,
-        style: "font-size:12px;font-weight:600;padding:6px 11px;border-radius:9999px;" +
-          (huddle.mia.includes(name) ? "background:rgba(120,53,15,.35);border:1px solid rgba(251,191,36,.35);color:#fcd34d;"
-           : huddle.sharing.includes(name) ? "background:rgba(6,78,74,.5);border:1px solid rgba(45,212,191,.45);color:#5eead4;"
-           : "background:rgba(2,6,23,.5);border:1px solid #1e293b;color:#8ea0b6;") })),
-      weekOptions: Object.keys(cohortSchedule).map(k => ({ value: k, label: "Week " + k + " · " + cohortSchedule[k].theme })),
-      onWeekChange: (e) => this.setState({ week: parseInt(e.target.value), day: 1 }),
-      jumpToToday: () => this.setState({ week: here.week, day: here.day }),
-      todayBtnStyle: "min-height:48px;padding:0 16px;border-radius:14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;" +
-        (isToday ? "background:#111a28;border:1px solid #1e293b;color:#4f6076;" : "background:rgba(6,78,74,.55);border:1px solid rgba(45,212,191,.45);color:#5eead4;"),
-      dayPills: [1,2,3,4,5].map(n => ({ n, dow: DOW[n-1], onClick: () => this.setState({ day: n }),
-        style: pill(n === day, !!studyDays[week + "-" + n], here.week === week && here.day === n) })),
-      platform: platformData[platform],
-      platformBtns: Object.keys(platformData).map(k => ({ icon: platformData[k].icon, title: platformData[k].title,
-        onClick: () => this.setPlatform(k),
-        style: "width:44px;height:44px;border-radius:14px;font-size:16px;cursor:pointer;transition:all .15s;" +
-          (k === platform ? "background:rgba(6,78,74,.7);border:1px solid #2dd4bf;" : "background:#151f2e;border:1px solid #243347;opacity:.65;") })),
-      prevDay: () => this.navigate(-1),
-      nextDay: () => this.navigate(1),
-      nextLabel: day === 5 ? "Next Week" : "Next Day"
+    const platformData = {
+      spotify: { cta: "Listen on Spotify", icon: "🟢", title: "Spotify", url: "https://open.spotify.com/show/6QlVAGJQayupe8KSleegNG" },
+      apple: { cta: "Listen on Apple", icon: "🍏", title: "Apple Podcasts", url: "https://podcasts.apple.com/us/podcast/being-with-jesus-podcast-scg-discipleship/id6811618382?at=1000l3bbu&itsct=podcast_box&itscg=30200&ls=1" },
+      youtube: { cta: "Watch on YouTube", icon: "▶️", title: "YouTube", url: "https://www.youtube.com/playlist?list=PLJ8lzqX55j04" },
+      subsplash: { cta: "Open in SCG App", icon: "📱", title: "SCG App", url: "https://subsplash.com/u/seacoastgrace/media/l/fpry94s-being-with-jesus-scg-discipleship" }
     };
-  }
-}
-</script>
+
+    const DOW = ["MON", "TUE", "WED", "THU", "FRI"];
+
+    function todayPosition() {
+      const now = new Date();
+      const t = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+      for (const w of Object.keys(cohortSchedule).map(Number)) {
+        const [y, m, d] = cohortSchedule[w].iso.split("-").map(Number);
+        const sun = new Date(y, m - 1, d).getTime();
+        const mon = sun - 6 * 86400000;
+        if (t >= mon && t <= sun) {
+          const idx = Math.round((t - mon) / 86400000);
+          return { week: w, day: Math.min(Math.max(idx + 1, 1), 5) };
+        }
+        if (t < mon) return { week: w, day: 1 };
+      }
+      return { week: 10, day: 5 };
+    }
+
+    let currentWeek = todayPosition().week;
+    let currentDay = todayPosition().day;
+    let preferredPlatform = localStorage.getItem("bwj.platform") || "spotify";
+
+    function setPlatform(p) {
+      preferredPlatform = p;
+      try { localStorage.setItem("bwj.platform", p); } catch (e) {}
+      renderUI();
+    }
+
+    function setWeek(w) {
+      currentWeek = w;
+      currentDay = 1;
+      renderUI();
+    }
+
+    function setDay(d) {
+      currentDay = d;
+      renderUI();
+    }
+
+    function jumpToToday() {
+      const here = todayPosition();
+      currentWeek = here.week;
+      currentDay = here.day;
+      renderUI();
+    }
+
+    function navigateDay(dir) {
+      let next = currentDay + dir;
+      if (next >= 1 && next <= 5) {
+        currentDay = next;
+      } else if (next > 5 && currentWeek < 10) {
+        currentWeek++;
+        currentDay = 1;
+      } else if (next < 1 && currentWeek > 1) {
+        currentWeek--;
+        currentDay = 5;
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      renderUI();
+    }
+
+    function triggerBibleGatewayTooltips() {
+      setTimeout(() => {
+        if (window.BGLinks && typeof window.BGLinks.linkVerses === "function") {
+          window.BGLinks.version = "NIV";
+          window.BGLinks.linkVerses();
+        }
+      }, 50);
+    }
+
+    function renderUI() {
+      const huddle = cohortSchedule[currentWeek];
+      const here = todayPosition();
+      const isToday = (here.week === currentWeek && here.day === currentDay);
+
+      // Header & Week Selector
+      document.getElementById("headerHuddleShort").textContent = huddle.targetSunday.replace("Sun, ", "Sun ");
+      
+      const selectEl = document.getElementById("weekSelect");
+      selectEl.innerHTML = Object.keys(cohortSchedule).map(k => `
+        <option value="${k}" ${parseInt(k) === currentWeek ? 'selected' : ''}>Week ${k} · ${cohortSchedule[k].theme}</option>
+      `).join('');
+
+      const todayBtn = document.getElementById("todayBtn");
+      if (isToday) {
+        todayBtn.style.background = "#111a28";
+        todayBtn.style.color = "#4f6076";
+      } else {
+        todayBtn.style.background = "rgba(6,78,74,0.55)";
+        todayBtn.style.color = "#5eead4";
+      }
+
+      // Huddle Details
+      document.getElementById("huddleTargetSunday").textContent = huddle.targetSunday;
+      document.getElementById("huddleSubtitle").textContent = `${huddle.theme} · ${huddle.acts}`;
+      document.getElementById("huddleSharing").textContent = huddle.sharing.length ? huddle.sharing.join(" · ") : "No one scheduled";
+      document.getElementById("huddleAbsent").textContent = huddle.mia.length ? huddle.mia.join(" · ") : "All present";
+
+      const specialBox = document.getElementById("huddleSpecialBox");
+      if (huddle.special) {
+        specialBox.style.display = "flex";
+        document.getElementById("huddleSpecialText").textContent = huddle.special;
+      } else {
+        specialBox.style.display = "none";
+      }
+
+      // Roster Badges
+      const rosterContainer = document.getElementById("rosterBadges");
+      rosterContainer.innerHTML = ROSTER.map(name => {
+        const isLeader = LEADERS.includes(name);
+        const displayName = isLeader ? `${name} ★` : name;
+        let bgStyle = "background: rgba(2,6,23,0.5); border: 1px solid #1e293b; color: #8ea0b6;";
+        if (huddle.mia.includes(name)) {
+          bgStyle = "background: rgba(120,53,15,0.35); border: 1px solid rgba(251,191,36,0.35); color: #fcd34d;";
+        } else if (huddle.sharing.includes(name)) {
+          bgStyle = "background: rgba(6,78,74,0.5); border: 1px solid rgba(45,212,191,0.45); color: #5eead4;";
+        }
+        return `<span style="font-size: 12px; font-weight: 600; padding: 6px 11px; border-radius: 9999px; ${bgStyle}">${displayName}</span>`;
+      }).join('');
+
+      // Fast countdown calculation
+      const now = new Date();
+      const fastDate = new Date(2026, 9, 3); // Oct 3, 2026
+      const fastAway = Math.round((fastDate - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
+      const countdownText = fastAway > 1 ? `in ${fastAway} days` : fastAway === 1 ? "tomorrow" : fastAway === 0 ? "today" : "completed";
+      document.getElementById("fastCountdownBadge").textContent = countdownText;
+
+      // 5-Day Pills
+      const pillContainer = document.getElementById("dayPillContainer");
+      pillContainer.innerHTML = [1, 2, 3, 4, 5].map(n => {
+        const isActive = (n === currentDay);
+        const hasData = !!studyDays[`${currentWeek}-${n}`];
+        const isCurrentCalendarDay = (here.week === currentWeek && here.day === n);
+        
+        let pillStyle = "display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; min-height: 52px; border-radius: 14px; cursor: pointer; transition: all .15s;";
+        if (isActive) {
+          pillStyle += "background: #0d9488; color: #fff; border: 1px solid #2dd4bf;";
+        } else {
+          pillStyle += `background: #111a28; color: ${hasData ? "#9fb0c5" : "#4f6076"}; border: 1px solid ${isCurrentCalendarDay ? "rgba(45,212,191,0.45)" : "#1e293b"};`;
+        }
+
+        return `
+          <button class="tap" onclick="setDay(${n})" style="${pillStyle}">
+            <span style="font-size: 9px; font-weight: 700; letter-spacing: 0.1em; opacity: 0.7;">${DOW[n-1]}</span>
+            <span style="font-size: 15px; font-weight: 800;">${n}</span>
+          </button>
+        `;
+      }).join('');
+
+      // Active Study Day Data
+      const key = `${currentWeek}-${currentDay}`;
+      const fallbackScripture = huddle.acts === "Overview" ? "Acts 1" : huddle.acts;
+      const dayData = studyDays[key] || {
+        title: "Reading in preparation",
+        scripture: fallbackScripture,
+        bibleUrl: makeBibleGatewayUrl(fallbackScripture, "NIV"),
+        think: [
+          "What stood out to you from these verses? What was familiar? What was new or interesting?",
+          "What questions came up for you as you read?",
+          "What did you learn, realize, or remember about Jesus as you read?"
+        ],
+        live: "Look back over the Scripture you've read and your answers above. What do you sense God is asking you to do or change in your life today?"
+      };
+
+      document.getElementById("studyDayHeading").textContent = `Week ${currentWeek} · Day ${currentDay}`;
+      document.getElementById("studyTitle").textContent = dayData.title;
+      document.getElementById("studyScriptureBadge").textContent = dayData.scripture;
+      document.getElementById("studyBibleLink").href = dayData.bibleUrl;
+
+      // Podcast Section
+      const platform = platformData[preferredPlatform];
+      const mainCTA = document.getElementById("mainPodcastCTA");
+      mainCTA.href = platform.url;
+      mainCTA.innerHTML = `<span style="font-size: 16px;">▶</span><span>${platform.cta}</span>`;
+
+      const playerBtns = document.getElementById("playerButtons");
+      playerBtns.innerHTML = Object.keys(platformData).map(k => {
+        const isSelected = (k === preferredPlatform);
+        return `
+          <button class="tap" onclick="setPlatform('${k}')" title="${platformData[k].title}" style="width: 44px; height: 44px; border-radius: 14px; font-size: 16px; cursor: pointer; transition: all .15s; ${isSelected ? 'background: rgba(6,78,74,0.7); border: 1px solid #2dd4bf;' : 'background: #151f2e; border: 1px solid #243347; opacity: .65;'}">
+            ${platformData[k].icon}
+          </button>
+        `;
+      }).join('');
+
+      // Scripture Reading Link
+      const reftagLink = document.getElementById("inlineReftagLink");
+      reftagLink.textContent = dayData.scripture;
+      reftagLink.href = dayData.bibleUrl;
+
+      // Think Questions
+      const thinkContainer = document.getElementById("thinkQuestionsContainer");
+      thinkContainer.innerHTML = dayData.think.map((q, idx) => `
+        <div style="display: flex; gap: 11px; align-items: flex-start; background: rgba(2,6,23,0.45); border: 1px solid rgba(30,41,59,0.8); border-radius: 14px; padding: 13px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; color: #2dd4bf; padding-top: 2px;">0${idx + 1}</span>
+          <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #dbe4ef;">${q}</p>
+        </div>
+      `).join('');
+
+      // Live Differently Prompt
+      document.getElementById("liveDifferentlyText").textContent = dayData.live;
+
+      // Next Day Button Label
+      document.getElementById("nextBtn").textContent = (currentDay === 5 ? "Next Week →" : "Next Day →");
+
+      // Fire tooltip scanner
+      triggerBibleGatewayTooltips();
+    }
+
+    renderUI();
+  </script>
 </body>
 </html>
