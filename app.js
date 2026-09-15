@@ -184,6 +184,11 @@ function renderUI() {
     todayBtn.style.color = "#5eead4";
   }
 
+  // Render Full Week Homework Range at Top
+  document.getElementById("weekRangeSpan").textContent = huddle.fullRange || huddle.acts;
+  document.getElementById("weekRangeSubtext").textContent = huddle.startEnd || "";
+
+  // Huddle Card
   document.getElementById("huddleTargetSunday").textContent = huddle.targetSunday;
   document.getElementById("huddleSubtitle").textContent = `${huddle.theme} · ${huddle.acts}`;
   document.getElementById("huddleSharing").textContent = huddle.sharing.length ? huddle.sharing.join(" · ") : "No one scheduled";
@@ -210,7 +215,7 @@ function renderUI() {
     return `<span style="font-size: 12px; font-weight: 600; padding: 6px 11px; border-radius: 9999px; ${bgStyle}">${displayName}</span>`;
   }).join('');
 
-  // Fast countdown calculation targeting Sep 27, 2026
+  // Fast countdown targeting Sep 27, 2026
   const now = new Date();
   const fastDate = new Date(2026, 8, 27); // Month index 8 = September
   const fastAway = Math.round((fastDate - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
@@ -283,13 +288,11 @@ function renderUI() {
     liveSection.style.display = "flex";
     scratchpadSection.style.display = "flex";
 
-    const thinkContainer = document.getElementById("thinkQuestionsContainer");
-    thinkContainer.innerHTML = dayData.think.map((q, idx) => `
-      <div style="display: flex; gap: 11px; align-items: flex-start; background: rgba(2,6,23,0.45); border: 1px solid rgba(30,41,59,0.8); border-radius: 14px; padding: 13px;">
-        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; color: #2dd4bf; padding-top: 2px;">0${idx + 1}</span>
-        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #dbe4ef;">${q}</p>
-      </div>
-    `).join('');
+    // Populate Quadrants in the Think Section
+    document.getElementById("quadNoticeText").textContent = dayData.noticeSubtext || "Write down a few things you noticed as you read.";
+    document.getElementById("quadGodText").textContent = dayData.godSubtext || "What did this passage teach you about God?";
+    document.getElementById("quadQuestionsText").textContent = dayData.questionsSubtext || "What questions came up for you as you read?";
+    document.getElementById("quadActionText").textContent = dayData.actionSubtext || "What action do you need to take?";
 
     document.getElementById("liveDifferentlyText").textContent = dayData.live;
 
