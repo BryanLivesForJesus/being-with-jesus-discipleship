@@ -88,7 +88,7 @@
       </details>
     </section>
 
-    <!-- Prayer & Fast Banner -->
+    <!-- Group Prayer & Fast Banner -->
     <section style="background: linear-gradient(145deg,rgba(6,78,74,0.42),rgba(13,21,32,0.9)); border: 1px solid rgba(20,184,166,0.3); border-radius: 20px; padding: 16px;">
       <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;">
         <div>
@@ -108,7 +108,7 @@
         </div>
         <div style="display: flex; gap: 10px; align-items: flex-start;">
           <span style="width: 6px; height: 6px; border-radius: 50%; background: #fbbf24; margin-top: 7px; flex: none;"></span>
-          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">We break the fast together — lunch at La Capilla after Sunday service.</span>
+          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Break fast together: Lunch at La Capilla after Sunday Service on 10/4.</span>
         </div>
       </div>
     </section>
@@ -137,7 +137,7 @@
         </div>
       </div>
 
-      <!-- Scripture Reading Section with Reftag Tooltip Trigger -->
+      <!-- SCRIPTURE READING SECTION -->
       <div style="display: flex; flex-direction: column; gap: 8px;">
         <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">📖 Scripture Reading</div>
         <div style="background: rgba(2,6,23,0.5); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px;">
@@ -150,14 +150,24 @@
         </div>
       </div>
 
-      <!-- Think Questions -->
-      <div style="display: flex; flex-direction: column; gap: 8px;">
+      <!-- PENDING UPLOAD NOTICE (Shown only for unuploaded days) -->
+      <div id="pendingNoticeBox" style="display: none; background: rgba(120,53,15,0.25); border: 1px solid rgba(251,191,36,0.4); border-radius: 14px; padding: 14px; color: #fde68a;">
+        <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px;">
+          <span>⏳</span><span>Content Digitization in Progress</span>
+        </div>
+        <p style="margin: 6px 0 0; font-size: 12px; color: #fef08a; line-height: 1.5;">
+          The questions and prompts for this day haven't been uploaded yet. Please be patient while we digitize the remaining workbook content! In the meantime, use the Bible Gateway link above to read the chapter.
+        </p>
+      </div>
+
+      <!-- THINK QUESTIONS -->
+      <div id="thinkSection" style="display: flex; flex-direction: column; gap: 8px;">
         <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">🤔 Think</div>
         <div id="thinkQuestionsContainer" style="display: flex; flex-direction: column; gap: 8px;"></div>
       </div>
 
-      <!-- Live Differently -->
-      <div style="display: flex; flex-direction: column; gap: 8px;">
+      <!-- LIVE DIFFERENTLY -->
+      <div id="liveSection" style="display: flex; flex-direction: column; gap: 8px;">
         <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #fbbf24;">🌱 Live Differently</div>
         <div style="background: linear-gradient(160deg,rgba(120,53,15,0.18),rgba(2,6,23,0.45)); border: 1px solid rgba(251,191,36,0.22); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 11px;">
           <p id="liveDifferentlyText" style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #dbe4ef;"></p>
@@ -206,6 +216,7 @@
       return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(cleanPassage)}&version=${version}`;
     }
 
+    // Only uploaded days live here. Unuploaded days will cleanly render the pending notice.
     const studyDays = {
       "2-1": {
         title: "The Ascension",
@@ -313,7 +324,7 @@
       const here = todayPosition();
       const isToday = (here.week === currentWeek && here.day === currentDay);
 
-      // Header & Week Selector
+      // Header & Week Select
       document.getElementById("headerHuddleShort").textContent = huddle.targetSunday.replace("Sun, ", "Sun ");
       
       const selectEl = document.getElementById("weekSelect");
@@ -330,7 +341,7 @@
         todayBtn.style.color = "#5eead4";
       }
 
-      // Huddle Details
+      // Huddle Card
       document.getElementById("huddleTargetSunday").textContent = huddle.targetSunday;
       document.getElementById("huddleSubtitle").textContent = `${huddle.theme} · ${huddle.acts}`;
       document.getElementById("huddleSharing").textContent = huddle.sharing.length ? huddle.sharing.join(" · ") : "No one scheduled";
@@ -358,14 +369,14 @@
         return `<span style="font-size: 12px; font-weight: 600; padding: 6px 11px; border-radius: 9999px; ${bgStyle}">${displayName}</span>`;
       }).join('');
 
-      // Fast countdown calculation
+      // Fast Countdown
       const now = new Date();
       const fastDate = new Date(2026, 9, 3); // Oct 3, 2026
       const fastAway = Math.round((fastDate - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
       const countdownText = fastAway > 1 ? `in ${fastAway} days` : fastAway === 1 ? "tomorrow" : fastAway === 0 ? "today" : "completed";
       document.getElementById("fastCountdownBadge").textContent = countdownText;
 
-      // 5-Day Pills
+      // 5-Day Pills (Dim if unuploaded)
       const pillContainer = document.getElementById("dayPillContainer");
       pillContainer.innerHTML = [1, 2, 3, 4, 5].map(n => {
         const isActive = (n === currentDay);
@@ -389,23 +400,17 @@
 
       // Active Study Day Data
       const key = `${currentWeek}-${currentDay}`;
+      const dayData = studyDays[key];
+      const hasUploadedData = !!dayData;
+
       const fallbackScripture = huddle.acts === "Overview" ? "Acts 1" : huddle.acts;
-      const dayData = studyDays[key] || {
-        title: "Reading in preparation",
-        scripture: fallbackScripture,
-        bibleUrl: makeBibleGatewayUrl(fallbackScripture, "NIV"),
-        think: [
-          "What stood out to you from these verses? What was familiar? What was new or interesting?",
-          "What questions came up for you as you read?",
-          "What did you learn, realize, or remember about Jesus as you read?"
-        ],
-        live: "Look back over the Scripture you've read and your answers above. What do you sense God is asking you to do or change in your life today?"
-      };
+      const scriptureText = hasUploadedData ? dayData.scripture : fallbackScripture;
+      const bibleUrl = hasUploadedData ? dayData.bibleUrl : makeBibleGatewayUrl(fallbackScripture, "NIV");
 
       document.getElementById("studyDayHeading").textContent = `Week ${currentWeek} · Day ${currentDay}`;
-      document.getElementById("studyTitle").textContent = dayData.title;
-      document.getElementById("studyScriptureBadge").textContent = dayData.scripture;
-      document.getElementById("studyBibleLink").href = dayData.bibleUrl;
+      document.getElementById("studyTitle").textContent = hasUploadedData ? dayData.title : `Day ${currentDay} Readings in Preparation`;
+      document.getElementById("studyScriptureBadge").textContent = scriptureText;
+      document.getElementById("studyBibleLink").href = bibleUrl;
 
       // Podcast Section
       const platform = platformData[preferredPlatform];
@@ -425,25 +430,37 @@
 
       // Scripture Reading Link
       const reftagLink = document.getElementById("inlineReftagLink");
-      reftagLink.textContent = dayData.scripture;
-      reftagLink.href = dayData.bibleUrl;
+      reftagLink.textContent = scriptureText;
+      reftagLink.href = bibleUrl;
 
-      // Think Questions
-      const thinkContainer = document.getElementById("thinkQuestionsContainer");
-      thinkContainer.innerHTML = dayData.think.map((q, idx) => `
-        <div style="display: flex; gap: 11px; align-items: flex-start; background: rgba(2,6,23,0.45); border: 1px solid rgba(30,41,59,0.8); border-radius: 14px; padding: 13px;">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; color: #2dd4bf; padding-top: 2px;">0${idx + 1}</span>
-          <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #dbe4ef;">${q}</p>
-        </div>
-      `).join('');
+      // Content Display / Pending State
+      const pendingBox = document.getElementById("pendingNoticeBox");
+      const thinkSection = document.getElementById("thinkSection");
+      const liveSection = document.getElementById("liveSection");
 
-      // Live Differently Prompt
-      document.getElementById("liveDifferentlyText").textContent = dayData.live;
+      if (hasUploadedData) {
+        pendingBox.style.display = "none";
+        thinkSection.style.display = "flex";
+        liveSection.style.display = "flex";
+
+        const thinkContainer = document.getElementById("thinkQuestionsContainer");
+        thinkContainer.innerHTML = dayData.think.map((q, idx) => `
+          <div style="display: flex; gap: 11px; align-items: flex-start; background: rgba(2,6,23,0.45); border: 1px solid rgba(30,41,59,0.8); border-radius: 14px; padding: 13px;">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; color: #2dd4bf; padding-top: 2px;">0${idx + 1}</span>
+            <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #dbe4ef;">${q}</p>
+          </div>
+        `).join('');
+
+        document.getElementById("liveDifferentlyText").textContent = dayData.live;
+      } else {
+        pendingBox.style.display = "block";
+        thinkSection.style.display = "none";
+        liveSection.style.display = "none";
+      }
 
       // Next Day Button Label
       document.getElementById("nextBtn").textContent = (currentDay === 5 ? "Next Week →" : "Next Day →");
 
-      // Fire tooltip scanner
       triggerBibleGatewayTooltips();
     }
 
