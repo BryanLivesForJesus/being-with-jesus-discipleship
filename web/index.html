@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
   <title>Being with Jesus | Paul & Roy's Group</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,10 +13,11 @@
     body { margin: 0; background: #0a0f18; color: #e7edf5; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
     a { color: #2dd4bf; text-decoration: none; }
     a:hover { color: #5eead4; }
-    button, select { font-family: inherit; -webkit-tap-highlight-color: transparent; }
+    button, select, textarea { font-family: inherit; -webkit-tap-highlight-color: transparent; }
     .tap:active { transform: scale(0.97); }
     details > summary { list-style: none; }
     details > summary::-webkit-details-marker { display: none; }
+    textarea:focus { outline: 1px solid #2dd4bf; }
   </style>
 </head>
 <body style="min-height: 100vh; padding-bottom: 104px;">
@@ -38,12 +39,13 @@
 
   <main style="max-width: 520px; margin: 0 auto; padding: 14px 16px; display: flex; flex-direction: column; gap: 14px;">
 
-    <!-- Week Selector Bar -->
+    <!-- Week Selector Bar & Review Button -->
     <div style="display: flex; align-items: center; gap: 8px;">
       <div style="position: relative; flex: 1; min-width: 0;">
         <select id="weekSelect" onchange="setWeek(parseInt(this.value))" style="width: 100%; appearance: none; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; font-size: 14px; font-weight: 700; border-radius: 14px; padding: 13px 40px 13px 14px; outline: none; cursor: pointer;"></select>
         <span style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #5eead4; font-size: 11px; pointer-events: none;">▼</span>
       </div>
+      <button class="tap" onclick="toggleReviewModal(true)" title="Review this week's notes for Sunday huddle" style="min-height: 48px; padding: 0 14px; border-radius: 14px; font-size: 13px; font-weight: 800; cursor: pointer; white-space: nowrap; border: 1px solid rgba(20,184,166,0.3); background: rgba(19,78,74,0.35); color: #5eead4;">📋 Review</button>
       <button id="todayBtn" class="tap" onclick="jumpToToday()" style="min-height: 48px; padding: 0 16px; border-radius: 14px; font-size: 13px; font-weight: 800; cursor: pointer; white-space: nowrap; border: 1px solid #1e293b;">Today</button>
     </div>
 
@@ -137,28 +139,24 @@
         </div>
       </div>
 
-      <!-- SCRIPTURE READING / CONTENT CONTAINER -->
+      <!-- SCRIPTURE READING CONTAINER -->
       <div style="display: flex; flex-direction: column; gap: 8px;">
         <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">📖 Scripture Reading</div>
-        
-        <!-- Active Uploaded Passage Box -->
-        <div id="activePassageBox" style="display: none; background: rgba(2,6,23,0.5); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 14px; flex-direction: column; gap: 8px;">
+        <div style="background: rgba(2,6,23,0.5); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
           <div style="font-size: 14px; line-height: 1.6; color: #dbe4ef;">
             Today's passage: <a id="inlineReftagLink" href="#" target="_blank" style="font-weight: 700; color: #5eead4; text-decoration: underline;"></a>
           </div>
-          <p style="margin: 0; font-size: 12px; color: #8ea0b6; line-height: 1.5;">
+          <p id="activePassageHint" style="margin: 0; font-size: 12px; color: #8ea0b6; line-height: 1.5; display: none;">
             Hover or tap the passage link above to preview verses inline via Bible Gateway, or click through to open the full chapter.
           </p>
-        </div>
-
-        <!-- Pending Digitization Single Box -->
-        <div id="pendingNoticeBox" style="display: none; background: rgba(120,53,15,0.25); border: 1px solid rgba(251,191,36,0.4); border-radius: 14px; padding: 14px; color: #fde68a;">
-          <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px;">
-            <span>⏳</span><span>Content Digitization in Progress</span>
+          <div id="pendingNoticeBox" style="display: none; background: rgba(120,53,15,0.25); border: 1px solid rgba(251,191,36,0.4); border-radius: 10px; padding: 12px; color: #fde68a; margin-top: 4px;">
+            <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px;">
+              <span>⏳</span><span>Content Digitization in Progress</span>
+            </div>
+            <p style="margin: 6px 0 0; font-size: 12px; color: #fef08a; line-height: 1.5;">
+              The questions and prompts for this day haven't been uploaded yet. Please be patient while we digitize the remaining workbook content! In the meantime, use the Bible Gateway link above to read the chapter focus.
+            </p>
           </div>
-          <p style="margin: 6px 0 0; font-size: 12px; color: #fef08a; line-height: 1.5;">
-            Today's passage and study prompts haven't been uploaded yet. Please be patient while we digitize the remaining workbook content! In the meantime, use the Bible Gateway link above to read the chapter focus.
-          </p>
         </div>
       </div>
 
@@ -180,6 +178,58 @@
         </div>
       </div>
 
+      <!-- DIGITAL SCRATCHPAD (Quadrants Homework) -->
+      <div id="scratchpadSection" style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">✏️ My Study Notes &amp; Quadrant</span>
+          <span id="scratchpadSaveIndicator" style="font-size: 10px; color: #2dd4bf; font-family: 'IBM Plex Mono', monospace; opacity: 0; transition: opacity 0.3s;">✓ Saved to device</span>
+        </div>
+
+        <details style="background: rgba(2,6,23,0.55); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 12px;">
+          <summary class="tap" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 13px; font-weight: 700; color: #e7edf5;">Open Workbook Scratchpad</span>
+            <span id="scratchpadDayBadge" style="font-size: 11px; font-weight: 700; color: #2dd4bf; background: rgba(19,78,74,0.4); padding: 4px 8px; border-radius: 8px;"></span>
+          </summary>
+
+          <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 12px;">
+            
+            <!-- 1. Notice -->
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <label style="font-size: 11px; font-weight: 700; color: #2dd4bf;">! Notice (aim for 4 observations):</label>
+              <textarea id="noteNotice" oninput="saveScratchpadField('notice', this.value)" rows="3" placeholder="Key words, repeated phrases, or cultural context you noticed..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
+            </div>
+
+            <!-- 2. See God -->
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <label style="font-size: 11px; font-weight: 700; color: #5eead4;">✝ What does this passage teach you about God? (aim for 3):</label>
+              <textarea id="noteGod" oninput="saveScratchpadField('god', this.value)" rows="3" placeholder="What does this reveal about Jesus, the Father, or the Spirit's character?..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
+            </div>
+
+            <!-- 3. Ask Questions -->
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <label style="font-size: 11px; font-weight: 700; color: #9fb0c5;">? What questions came up for you as you read? (aim for 2):</label>
+              <textarea id="noteQuestions" oninput="saveScratchpadField('questions', this.value)" rows="2" placeholder="Things that are challenging, confusing, or worth discussing Sunday..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
+            </div>
+
+            <!-- 4. Action Step -->
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <label style="font-size: 11px; font-weight: 700; color: #fbbf24;">» What action do you need to take? (aim for 1):</label>
+              <textarea id="noteAction" oninput="saveScratchpadField('action', this.value)" rows="2" placeholder="Concrete, practical step God is asking you to take today..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
+            </div>
+
+            <!-- 5. Prayer -->
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <label style="font-size: 11px; font-weight: 700; color: #f43f5e;">∞ Write out your prayers:</label>
+              <textarea id="notePrayer" oninput="saveScratchpadField('prayer', this.value)" rows="2" placeholder="Personal prayers closing your time with God..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
+            </div>
+
+            <p style="margin: 0; font-size: 10px; color: #64748b; font-style: italic;">
+              🔒 Completely private. Notes are stored only on this browser and device.
+            </p>
+          </div>
+        </details>
+      </div>
+
     </section>
 
     <div style="text-align: center; padding: 2px 0 6px;">
@@ -187,6 +237,26 @@
     </div>
 
   </main>
+
+  <!-- Sunday Huddle Review Modal -->
+  <div id="reviewModal" style="display: none; position: fixed; inset: 0; z-index: 50; background: rgba(2,6,23,0.85); backdrop-filter: blur(8px); padding: 16px; align-items: center; justify-content: center;">
+    <div style="background: #0f172a; border: 1px solid rgba(20,184,166,0.4); border-radius: 20px; width: 100%; max-width: 520px; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden;">
+      
+      <div style="padding: 16px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h3 style="margin: 0; font-size: 15px; font-weight: 800; color: #fff;">Weekly Notes Summary</h3>
+          <span style="font-size: 11px; color: #2dd4bf;">Sunday Huddle Quick Reference</span>
+        </div>
+        <button class="tap" onclick="toggleReviewModal(false)" style="background: #1e293b; border: 1px solid #334155; color: #cbd5e1; border-radius: 10px; padding: 6px 12px; font-size: 12px; cursor: pointer;">✕ Close</button>
+      </div>
+
+      <div id="reviewSummaryContainer" style="padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; flex: 1;"></div>
+
+      <div style="padding: 12px 16px; border-top: 1px solid #1e293b; background: rgba(2,6,23,0.5); display: flex; gap: 8px;">
+        <button class="tap" onclick="copyNotesToClipboard()" style="flex: 1; background: #0d9488; color: #fff; font-size: 13px; font-weight: 800; border: none; border-radius: 12px; padding: 12px; cursor: pointer;">📋 Copy All Notes to Clipboard</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Fixed Bottom Navigation -->
   <nav style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: rgba(10,15,24,0.9); backdrop-filter: blur(18px); border-top: 1px solid rgba(30,41,59,0.9); padding: 10px 16px calc(10px + env(safe-area-inset-bottom));">
@@ -196,278 +266,8 @@
     </div>
   </nav>
 
-  <script>
-    const cohortSchedule = {
-      1: { targetSunday: "Sun, Sep 13", iso: "2026-09-13", theme: "Welcome to Acts", acts: "Overview", sharing: [], mia: [], special: "Group Kickoff — welcome & overview of the 10 weeks." },
-      2: { targetSunday: "Sun, Sep 20", iso: "2026-09-20", theme: "The Holy Spirit Arrives", acts: "Acts 1–2", sharing: ["Michael", "Bryan"], mia: [], special: "" },
-      3: { targetSunday: "Sun, Sep 27", iso: "2026-09-27", theme: "The Birth of the Church", acts: "Acts 3–6", sharing: ["Joe C.", "Nate"], mia: [], special: "" },
-      4: { targetSunday: "Sun, Oct 4", iso: "2026-10-04", theme: "Persecuted and Scattered", acts: "Acts 7–9", sharing: [], mia: ["Joe A.", "Joe C."], special: "🕊️ Group Prayer & Fast. Fast begins Sat 10/3 @ 12 PM. Sun 10/4 prayer at Rossmoor Park (10:45–1:00), then lunch at La Capilla after Sunday service." },
-      5: { targetSunday: "Sun, Oct 11", iso: "2026-10-11", theme: "Good News for the Gentiles", acts: "Acts 9–11", sharing: [], mia: ["Nate", "Roy"], special: "" },
-      6: { targetSunday: "Sun, Oct 18", iso: "2026-10-18", theme: "The Mission", acts: "Acts 12–15", sharing: ["Zac"], mia: ["Roy"], special: "" },
-      7: { targetSunday: "Sun, Oct 25", iso: "2026-10-25", theme: "The Growing Church", acts: "Acts 15–17", sharing: ["Paul", "Roy"], mia: [], special: "" },
-      8: { targetSunday: "Sun, Nov 1", iso: "2026-11-01", theme: "The Established Church", acts: "Acts 18–21", sharing: [], mia: ["Paul"], special: "" },
-      9: { targetSunday: "Sun, Nov 8", iso: "2026-11-08", theme: "Opposition in Jerusalem", acts: "Acts 21–25", sharing: ["Johnny", "Joe A."], mia: [], special: "" },
-      10: { targetSunday: "Sun, Nov 15", iso: "2026-11-15", theme: "On to Rome (Celebration)", acts: "Acts 25–28", sharing: [], mia: [], special: "🎉 Celebration wrap-up. Baptism services the following weekend, 11/21–11/22." }
-    };
-
-    const ROSTER = ["Paul", "Roy", "Michael", "Bryan", "Joe A.", "Joe C.", "Nate", "Zac", "Johnny"];
-    const LEADERS = ["Paul", "Roy"];
-
-    function makeBibleGatewayUrl(passage, version = "NIV") {
-      const cleanPassage = passage.replace(/–/g, "-").replace(/—/g, "-");
-      return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(cleanPassage)}&version=${version}`;
-    }
-
-    const studyDays = {
-      "2-1": {
-        title: "The Ascension",
-        scripture: "Acts 1:1–11",
-        bibleUrl: makeBibleGatewayUrl("Acts 1:1-11", "NIV"),
-        think: [
-          "What stood out to you from these verses? What was familiar? What was new or interesting?",
-          "What questions came up for you as you read?",
-          "What did you learn, realize, or remember about Jesus as you read?"
-        ],
-        live: "Look back over our teaching, the Scripture you've read, and your answers above. What do you sense God is asking you to do or change in your life today?"
-      },
-      "2-2": {
-        title: "Matthias Chosen",
-        scripture: "Acts 1:12–26",
-        bibleUrl: makeBibleGatewayUrl("Acts 1:12-26", "NIV"),
-        think: [
-          "Notice the emphasis on persistent, unified prayer before any major decision was made.",
-          "Why was it critical that the new leader had walked with Jesus from the beginning?",
-          "Where in your life do you need to pause and pray before taking the next step?"
-        ],
-        live: "Commit 5 minutes today to pray specifically for unity among the men in our group."
-      }
-    };
-
-    const platformData = {
-      spotify: { cta: "Listen on Spotify", icon: "🟢", title: "Spotify", url: "https://open.spotify.com/show/6QlVAGJQayupe8KSleegNG" },
-      apple: { cta: "Listen on Apple", icon: "🍏", title: "Apple Podcasts", url: "https://podcasts.apple.com/us/podcast/being-with-jesus-podcast-scg-discipleship/id6811618382?at=1000l3bbu&itsct=podcast_box&itscg=30200&ls=1" },
-      youtube: { cta: "Watch on YouTube", icon: "▶️", title: "YouTube", url: "https://www.youtube.com/playlist?list=PLJ8lzqX55j04" },
-      subsplash: { cta: "Open in SCG App", icon: "📱", title: "SCG App", url: "https://subsplash.com/u/seacoastgrace/media/l/fpry94s-being-with-jesus-scg-discipleship" }
-    };
-
-    const DOW = ["MON", "TUE", "WED", "THU", "FRI"];
-
-    function todayPosition() {
-      const now = new Date();
-      const t = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-      for (const w of Object.keys(cohortSchedule).map(Number)) {
-        const [y, m, d] = cohortSchedule[w].iso.split("-").map(Number);
-        const sun = new Date(y, m - 1, d).getTime();
-        const mon = sun - 6 * 86400000;
-        if (t >= mon && t <= sun) {
-          const idx = Math.round((t - mon) / 86400000);
-          return { week: w, day: Math.min(Math.max(idx + 1, 1), 5) };
-        }
-        if (t < mon) return { week: w, day: 1 };
-      }
-      return { week: 10, day: 5 };
-    }
-
-    let currentWeek = todayPosition().week;
-    let currentDay = todayPosition().day;
-    let preferredPlatform = localStorage.getItem("bwj.platform") || "spotify";
-
-    function setPlatform(p) {
-      preferredPlatform = p;
-      try { localStorage.setItem("bwj.platform", p); } catch (e) {}
-      renderUI();
-    }
-
-    function setWeek(w) {
-      currentWeek = w;
-      currentDay = 1;
-      renderUI();
-    }
-
-    function setDay(d) {
-      currentDay = d;
-      renderUI();
-    }
-
-    function jumpToToday() {
-      const here = todayPosition();
-      currentWeek = here.week;
-      currentDay = here.day;
-      renderUI();
-    }
-
-    function navigateDay(dir) {
-      let next = currentDay + dir;
-      if (next >= 1 && next <= 5) {
-        currentDay = next;
-      } else if (next > 5 && currentWeek < 10) {
-        currentWeek++;
-        currentDay = 1;
-      } else if (next < 1 && currentWeek > 1) {
-        currentWeek--;
-        currentDay = 5;
-      }
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      renderUI();
-    }
-
-    function triggerBibleGatewayTooltips() {
-      setTimeout(() => {
-        if (window.BGLinks && typeof window.BGLinks.linkVerses === "function") {
-          window.BGLinks.version = "NIV";
-          window.BGLinks.linkVerses();
-        }
-      }, 50);
-    }
-
-    function renderUI() {
-      const huddle = cohortSchedule[currentWeek];
-      const here = todayPosition();
-      const isToday = (here.week === currentWeek && here.day === currentDay);
-
-      // Header & Week Selector
-      document.getElementById("headerHuddleShort").textContent = huddle.targetSunday.replace("Sun, ", "Sun ");
-      
-      const selectEl = document.getElementById("weekSelect");
-      selectEl.innerHTML = Object.keys(cohortSchedule).map(k => `
-        <option value="${k}" ${parseInt(k) === currentWeek ? 'selected' : ''}>Week ${k} · ${cohortSchedule[k].theme}</option>
-      `).join('');
-
-      const todayBtn = document.getElementById("todayBtn");
-      if (isToday) {
-        todayBtn.style.background = "#111a28";
-        todayBtn.style.color = "#4f6076";
-      } else {
-        todayBtn.style.background = "rgba(6,78,74,0.55)";
-        todayBtn.style.color = "#5eead4";
-      }
-
-      // Huddle Card
-      document.getElementById("huddleTargetSunday").textContent = huddle.targetSunday;
-      document.getElementById("huddleSubtitle").textContent = `${huddle.theme} · ${huddle.acts}`;
-      document.getElementById("huddleSharing").textContent = huddle.sharing.length ? huddle.sharing.join(" · ") : "No one scheduled";
-      document.getElementById("huddleAbsent").textContent = huddle.mia.length ? huddle.mia.join(" · ") : "All present";
-
-      const specialBox = document.getElementById("huddleSpecialBox");
-      if (huddle.special) {
-        specialBox.style.display = "flex";
-        document.getElementById("huddleSpecialText").textContent = huddle.special;
-      } else {
-        specialBox.style.display = "none";
-      }
-
-      // Roster Badges
-      const rosterContainer = document.getElementById("rosterBadges");
-      rosterContainer.innerHTML = ROSTER.map(name => {
-        const isLeader = LEADERS.includes(name);
-        const displayName = isLeader ? `${name} ★` : name;
-        let bgStyle = "background: rgba(2,6,23,0.5); border: 1px solid #1e293b; color: #8ea0b6;";
-        if (huddle.mia.includes(name)) {
-          bgStyle = "background: rgba(120,53,15,0.35); border: 1px solid rgba(251,191,36,0.35); color: #fcd34d;";
-        } else if (huddle.sharing.includes(name)) {
-          bgStyle = "background: rgba(6,78,74,0.5); border: 1px solid rgba(45,212,191,0.45); color: #5eead4;";
-        }
-        return `<span style="font-size: 12px; font-weight: 600; padding: 6px 11px; border-radius: 9999px; ${bgStyle}">${displayName}</span>`;
-      }).join('');
-
-      // Fast Countdown
-      const now = new Date();
-      const fastDate = new Date(2026, 9, 3); // Oct 3, 2026
-      const fastAway = Math.round((fastDate - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
-      const countdownText = fastAway > 1 ? `in ${fastAway} days` : fastAway === 1 ? "tomorrow" : fastAway === 0 ? "today" : "completed";
-      document.getElementById("fastCountdownBadge").textContent = countdownText;
-
-      // 5-Day Pills
-      const pillContainer = document.getElementById("dayPillContainer");
-      pillContainer.innerHTML = [1, 2, 3, 4, 5].map(n => {
-        const isActive = (n === currentDay);
-        const hasData = !!studyDays[`${currentWeek}-${n}`];
-        const isCurrentCalendarDay = (here.week === currentWeek && here.day === n);
-        
-        let pillStyle = "display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; min-height: 52px; border-radius: 14px; cursor: pointer; transition: all .15s;";
-        if (isActive) {
-          pillStyle += "background: #0d9488; color: #fff; border: 1px solid #2dd4bf;";
-        } else {
-          pillStyle += `background: #111a28; color: ${hasData ? "#9fb0c5" : "#4f6076"}; border: 1px solid ${isCurrentCalendarDay ? "rgba(45,212,191,0.45)" : "#1e293b"};`;
-        }
-
-        return `
-          <button class="tap" onclick="setDay(${n})" style="${pillStyle}">
-            <span style="font-size: 9px; font-weight: 700; letter-spacing: 0.1em; opacity: 0.7;">${DOW[n-1]}</span>
-            <span style="font-size: 15px; font-weight: 800;">${n}</span>
-          </button>
-        `;
-      }).join('');
-
-      // Day Data Check
-      const key = `${currentWeek}-${currentDay}`;
-      const dayData = studyDays[key];
-      const hasUploadedData = !!dayData;
-
-      const fallbackScripture = huddle.acts === "Overview" ? "Acts 1" : huddle.acts;
-      const scriptureText = hasUploadedData ? dayData.scripture : fallbackScripture;
-      const bibleUrl = hasUploadedData ? dayData.bibleUrl : makeBibleGatewayUrl(fallbackScripture, "NIV");
-
-      document.getElementById("studyDayHeading").textContent = `Week ${currentWeek} · Day ${currentDay}`;
-      document.getElementById("studyTitle").textContent = hasUploadedData ? dayData.title : `Day ${currentDay} Readings in Preparation`;
-      document.getElementById("studyScriptureBadge").textContent = scriptureText;
-      document.getElementById("studyBibleLink").href = bibleUrl;
-
-      // Podcast Section
-      const platform = platformData[preferredPlatform];
-      const mainCTA = document.getElementById("mainPodcastCTA");
-      mainCTA.href = platform.url;
-      mainCTA.innerHTML = `<span style="font-size: 16px;">▶</span><span>${platform.cta}</span>`;
-
-      const playerBtns = document.getElementById("playerButtons");
-      playerBtns.innerHTML = Object.keys(platformData).map(k => {
-        const isSelected = (k === preferredPlatform);
-        return `
-          <button class="tap" onclick="setPlatform('${k}')" title="${platformData[k].title}" style="width: 44px; height: 44px; border-radius: 14px; font-size: 16px; cursor: pointer; transition: all .15s; ${isSelected ? 'background: rgba(6,78,74,0.7); border: 1px solid #2dd4bf;' : 'background: #151f2e; border: 1px solid #243347; opacity: .65;'}">
-            ${platformData[k].icon}
-          </button>
-        `;
-      }).join('');
-
-      // Toggle Single Container State
-      const activePassageBox = document.getElementById("activePassageBox");
-      const pendingNoticeBox = document.getElementById("pendingNoticeBox");
-      const thinkSection = document.getElementById("thinkSection");
-      const liveSection = document.getElementById("liveSection");
-
-      if (hasUploadedData) {
-        activePassageBox.style.display = "flex";
-        pendingNoticeBox.style.display = "none";
-        thinkSection.style.display = "flex";
-        liveSection.style.display = "flex";
-
-        const reftagLink = document.getElementById("inlineReftagLink");
-        reftagLink.textContent = dayData.scripture;
-        reftagLink.href = dayData.bibleUrl;
-
-        const thinkContainer = document.getElementById("thinkQuestionsContainer");
-        thinkContainer.innerHTML = dayData.think.map((q, idx) => `
-          <div style="display: flex; gap: 11px; align-items: flex-start; background: rgba(2,6,23,0.45); border: 1px solid rgba(30,41,59,0.8); border-radius: 14px; padding: 13px;">
-            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; color: #2dd4bf; padding-top: 2px;">0${idx + 1}</span>
-            <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #dbe4ef;">${q}</p>
-          </div>
-        `).join('');
-
-        document.getElementById("liveDifferentlyText").textContent = dayData.live;
-      } else {
-        activePassageBox.style.display = "none";
-        pendingNoticeBox.style.display = "block";
-        thinkSection.style.display = "none";
-        liveSection.style.display = "none";
-      }
-
-      // Next Day Button Label
-      document.getElementById("nextBtn").textContent = (currentDay === 5 ? "Next Week →" : "Next Day →");
-
-      triggerBibleGatewayTooltips();
-    }
-
-    renderUI();
-  </script>
+  <!-- Externalized Scripts (Separation of Concerns) -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
