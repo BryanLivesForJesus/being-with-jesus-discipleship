@@ -1,8 +1,26 @@
-﻿function makeBibleGatewayUrl(passage, version = "NIV") {
+﻿/**
+ * ============================================================================
+ * DATA.JS — BEING WITH JESUS DATA REGISTRY
+ * Version: 1.3.0 | Timestamp: 2026-09-15T13:00:00-07:00
+ * Description: Contains schedule dates, rosters, podcast links, and study text.
+ * ============================================================================
+ */
+
+/**
+ * Normalizes passage strings (replacing en-dashes/em-dashes) and builds clean Bible Gateway URLs.
+ * @param {string} passage - E.g. "Acts 1:1-11"
+ * @param {string} version - Default "NIV"
+ * @returns {string} Fully encoded URL
+ */
+function makeBibleGatewayUrl(passage, version = "NIV") {
   const cleanPassage = passage.replace(/–/g, "-").replace(/—/g, "-");
   return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(cleanPassage)}&version=${version}`;
 }
 
+/**
+ * Master Cohort Schedule (10 Weeks)
+ * Contains Sunday targets, sharing rotations, and event milestones.
+ */
 const cohortSchedule = {
   1: { 
     targetSunday: "Sun, Sep 13", 
@@ -126,7 +144,10 @@ const platformData = {
   subsplash: { cta: "Open in SCG App", icon: "📱", title: "SCG App", url: "https://subsplash.com/u/seacoastgrace/media/l/fpry94s-being-with-jesus-scg-discipleship" }
 };
 
-// Full Week 2 digitizations with customized quadrant target notes
+/**
+ * Digitized Workbook Content
+ * Structured to support the 4 quadrant questions and the action step.
+ */
 const studyDays = {
   "2-1": {
     title: "The Ascension",
