@@ -6,8 +6,8 @@
 const cohortSchedule = {
   1: { targetSunday: "Sun, Sep 13", iso: "2026-09-13", theme: "Welcome to Acts", acts: "Overview", sharing: [], mia: [], special: "Group Kickoff — welcome & overview of the 10 weeks." },
   2: { targetSunday: "Sun, Sep 20", iso: "2026-09-20", theme: "The Holy Spirit Arrives", acts: "Acts 1–2", sharing: ["Michael", "Bryan"], mia: [], special: "" },
-  3: { targetSunday: "Sun, Sep 27", iso: "2026-09-27", theme: "The Birth of the Church", acts: "Acts 3–6", sharing: ["Joe C.", "Nate"], mia: [], special: "" },
-  4: { targetSunday: "Sun, Oct 4", iso: "2026-10-04", theme: "Persecuted and Scattered", acts: "Acts 7–9", sharing: [], mia: ["Joe A.", "Joe C."], special: "🕊️ Group Prayer & Fast. Fast begins Sat 10/3 @ 12 PM. Sun 10/4 prayer at Rossmoor Park (10:45–1:00), then lunch at La Capilla after Sunday service." },
+  3: { targetSunday: "Sun, Sep 27", iso: "2026-09-27", theme: "The Birth of the Church", acts: "Acts 3–6", sharing: ["Joe C.", "Nate"], mia: [], special: "🕊️ Group Prayer & Fast. Fast begins Sat 9/26 @ 12 PM. Sun 9/27 prayer at Rossmoor Park (10:45–1:00), followed by lunch after the fast and prayer at In-N-Out in Rossmoor." },
+  4: { targetSunday: "Sun, Oct 4", iso: "2026-10-04", theme: "Persecuted and Scattered", acts: "Acts 7–9", sharing: [], mia: ["Joe A.", "Joe C."], special: "" },
   5: { targetSunday: "Sun, Oct 11", iso: "2026-10-11", theme: "Good News for the Gentiles", acts: "Acts 9–11", sharing: [], mia: ["Nate", "Roy"], special: "" },
   6: { targetSunday: "Sun, Oct 18", iso: "2026-10-18", theme: "The Mission", acts: "Acts 12–15", sharing: ["Zac"], mia: ["Roy"], special: "" },
   7: { targetSunday: "Sun, Oct 25", iso: "2026-10-25", theme: "The Growing Church", acts: "Acts 15–17", sharing: ["Paul", "Roy"], mia: [], special: "" },
@@ -26,7 +26,7 @@ const platformData = {
   subsplash: { cta: "Open in SCG App", icon: "📱", title: "SCG App", url: "https://subsplash.com/u/seacoastgrace/media/l/fpry94s-being-with-jesus-scg-discipleship" }
 };
 
-// Full Week 2 digitizations sourced from workbook pages
+// Week 2 Digitizations
 const studyDays = {
   "2-1": {
     title: "The Ascension",

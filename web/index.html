@@ -90,27 +90,27 @@
       </details>
     </section>
 
-    <!-- Group Prayer & Fast Banner -->
+    <!-- Group Prayer & Fast Banner (Updated to Sep 27 & In-N-Out) -->
     <section style="background: linear-gradient(145deg,rgba(6,78,74,0.42),rgba(13,21,32,0.9)); border: 1px solid rgba(20,184,166,0.3); border-radius: 20px; padding: 16px;">
       <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;">
         <div>
           <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">🕊️ Prayer &amp; Fast</div>
-          <div style="font-size: 17px; font-weight: 800; color: #fff; margin-top: 4px; letter-spacing: -0.01em;">Sat Oct 3 – Sun Oct 4</div>
+          <div style="font-size: 17px; font-weight: 800; color: #fff; margin-top: 4px; letter-spacing: -0.01em;">Sun Sep 27, 2026</div>
         </div>
         <div id="fastCountdownBadge" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5eead4; background: rgba(2,6,23,0.45); border: 1px solid rgba(20,184,166,0.25); padding: 6px 12px; border-radius: 9999px; white-space: nowrap;"></div>
       </div>
       <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 9px;">
         <div style="display: flex; gap: 10px; align-items: flex-start;">
           <span style="width: 6px; height: 6px; border-radius: 50%; background: #2dd4bf; margin-top: 7px; flex: none;"></span>
-          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Fast begins Sat 10/3 at 12:00 PM.</span>
+          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Fast begins Sat 9/26 at 12:00 PM.</span>
         </div>
         <div style="display: flex; gap: 10px; align-items: flex-start;">
           <span style="width: 6px; height: 6px; border-radius: 50%; background: #2dd4bf; margin-top: 7px; flex: none;"></span>
-          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Sun 10/4 group prayer at Rossmoor Park, 10:45–1:00.</span>
+          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Sun 9/27 group prayer at Rossmoor Park, 10:45–1:00.</span>
         </div>
         <div style="display: flex; gap: 10px; align-items: flex-start;">
           <span style="width: 6px; height: 6px; border-radius: 50%; background: #fbbf24; margin-top: 7px; flex: none;"></span>
-          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Break fast together: Lunch at La Capilla after Sunday Service on 10/4.</span>
+          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Break fast together: Lunch after the fast and prayer at In-N-Out in Rossmoor.</span>
         </div>
       </div>
     </section>
@@ -192,32 +192,26 @@
           </summary>
 
           <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 12px;">
-            
-            <!-- 1. Notice -->
             <div style="display: flex; flex-direction: column; gap: 4px;">
               <label style="font-size: 11px; font-weight: 700; color: #2dd4bf;">! Notice (aim for 4 observations):</label>
               <textarea id="noteNotice" oninput="saveScratchpadField('notice', this.value)" rows="3" placeholder="Key words, repeated phrases, or cultural context you noticed..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
             </div>
 
-            <!-- 2. See God -->
             <div style="display: flex; flex-direction: column; gap: 4px;">
               <label style="font-size: 11px; font-weight: 700; color: #5eead4;">✝ What does this passage teach you about God? (aim for 3):</label>
               <textarea id="noteGod" oninput="saveScratchpadField('god', this.value)" rows="3" placeholder="What does this reveal about Jesus, the Father, or the Spirit's character?..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
             </div>
 
-            <!-- 3. Ask Questions -->
             <div style="display: flex; flex-direction: column; gap: 4px;">
               <label style="font-size: 11px; font-weight: 700; color: #9fb0c5;">? What questions came up for you as you read? (aim for 2):</label>
               <textarea id="noteQuestions" oninput="saveScratchpadField('questions', this.value)" rows="2" placeholder="Things that are challenging, confusing, or worth discussing Sunday..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
             </div>
 
-            <!-- 4. Action Step -->
             <div style="display: flex; flex-direction: column; gap: 4px;">
               <label style="font-size: 11px; font-weight: 700; color: #fbbf24;">» What action do you need to take? (aim for 1):</label>
               <textarea id="noteAction" oninput="saveScratchpadField('action', this.value)" rows="2" placeholder="Concrete, practical step God is asking you to take today..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
             </div>
 
-            <!-- 5. Prayer -->
             <div style="display: flex; flex-direction: column; gap: 4px;">
               <label style="font-size: 11px; font-weight: 700; color: #f43f5e;">∞ Write out your prayers:</label>
               <textarea id="notePrayer" oninput="saveScratchpadField('prayer', this.value)" rows="2" placeholder="Personal prayers closing your time with God..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
@@ -241,7 +235,6 @@
   <!-- Sunday Huddle Review Modal -->
   <div id="reviewModal" style="display: none; position: fixed; inset: 0; z-index: 50; background: rgba(2,6,23,0.85); backdrop-filter: blur(8px); padding: 16px; align-items: center; justify-content: center;">
     <div style="background: #0f172a; border: 1px solid rgba(20,184,166,0.4); border-radius: 20px; width: 100%; max-width: 520px; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden;">
-      
       <div style="padding: 16px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center;">
         <div>
           <h3 style="margin: 0; font-size: 15px; font-weight: 800; color: #fff;">Weekly Notes Summary</h3>
@@ -249,9 +242,7 @@
         </div>
         <button class="tap" onclick="toggleReviewModal(false)" style="background: #1e293b; border: 1px solid #334155; color: #cbd5e1; border-radius: 10px; padding: 6px 12px; font-size: 12px; cursor: pointer;">✕ Close</button>
       </div>
-
       <div id="reviewSummaryContainer" style="padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; flex: 1;"></div>
-
       <div style="padding: 12px 16px; border-top: 1px solid #1e293b; background: rgba(2,6,23,0.5); display: flex; gap: 8px;">
         <button class="tap" onclick="copyNotesToClipboard()" style="flex: 1; background: #0d9488; color: #fff; font-size: 13px; font-weight: 800; border: none; border-radius: 12px; padding: 12px; cursor: pointer;">📋 Copy All Notes to Clipboard</button>
       </div>
@@ -266,7 +257,6 @@
     </div>
   </nav>
 
-  <!-- Externalized Scripts (Separation of Concerns) -->
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>

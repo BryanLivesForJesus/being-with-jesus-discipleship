@@ -68,9 +68,7 @@ function triggerBibleGatewayTooltips() {
   }, 60);
 }
 
-// -------------------------------------------------------------
-// LOCAL SCRATCHPAD ENGINE (localStorage auto-save)
-// -------------------------------------------------------------
+// Local Storage Scratchpad
 let saveDebounceTimer;
 function getNoteKey(week, day, field) {
   return `bwj_note_w${week}_d${day}_${field}`;
@@ -165,15 +163,11 @@ function copyNotesToClipboard() {
   });
 }
 
-// -------------------------------------------------------------
-// MAIN RENDER ENGINE
-// -------------------------------------------------------------
 function renderUI() {
   const huddle = cohortSchedule[currentWeek];
   const here = todayPosition();
   const isToday = (here.week === currentWeek && here.day === currentDay);
 
-  // Header & Week Select
   document.getElementById("headerHuddleShort").textContent = huddle.targetSunday.replace("Sun, ", "Sun ");
   
   const selectEl = document.getElementById("weekSelect");
@@ -190,7 +184,6 @@ function renderUI() {
     todayBtn.style.color = "#5eead4";
   }
 
-  // Huddle Card
   document.getElementById("huddleTargetSunday").textContent = huddle.targetSunday;
   document.getElementById("huddleSubtitle").textContent = `${huddle.theme} · ${huddle.acts}`;
   document.getElementById("huddleSharing").textContent = huddle.sharing.length ? huddle.sharing.join(" · ") : "No one scheduled";
@@ -204,7 +197,6 @@ function renderUI() {
     specialBox.style.display = "none";
   }
 
-  // Roster Badges
   const rosterContainer = document.getElementById("rosterBadges");
   rosterContainer.innerHTML = ROSTER.map(name => {
     const isLeader = LEADERS.includes(name);
@@ -218,14 +210,13 @@ function renderUI() {
     return `<span style="font-size: 12px; font-weight: 600; padding: 6px 11px; border-radius: 9999px; ${bgStyle}">${displayName}</span>`;
   }).join('');
 
-  // Fast Countdown Badge
+  // Fast countdown calculation targeting Sep 27, 2026
   const now = new Date();
-  const fastDate = new Date(2026, 9, 3);
+  const fastDate = new Date(2026, 8, 27); // Month index 8 = September
   const fastAway = Math.round((fastDate - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
   const countdownText = fastAway > 1 ? `in ${fastAway} days` : fastAway === 1 ? "tomorrow" : fastAway === 0 ? "today" : "completed";
   document.getElementById("fastCountdownBadge").textContent = countdownText;
 
-  // 5-Day Pills
   const pillContainer = document.getElementById("dayPillContainer");
   pillContainer.innerHTML = [1, 2, 3, 4, 5].map(n => {
     const isActive = (n === currentDay);
@@ -247,7 +238,6 @@ function renderUI() {
     `;
   }).join('');
 
-  // Day Content Check
   const key = `${currentWeek}-${currentDay}`;
   const dayData = studyDays[key];
   const hasUploadedData = !!dayData;
@@ -261,7 +251,6 @@ function renderUI() {
   document.getElementById("studyScriptureBadge").textContent = scriptureText;
   document.getElementById("studyBibleLink").href = bibleUrl;
 
-  // Podcast Launcher
   const platform = platformData[preferredPlatform];
   const mainCTA = document.getElementById("mainPodcastCTA");
   mainCTA.href = platform.url;
@@ -277,7 +266,6 @@ function renderUI() {
     `;
   }).join('');
 
-  // Scripture Box State
   const activeHint = document.getElementById("activePassageHint");
   const pendingNoticeBox = document.getElementById("pendingNoticeBox");
   const thinkSection = document.getElementById("thinkSection");
@@ -295,7 +283,6 @@ function renderUI() {
     liveSection.style.display = "flex";
     scratchpadSection.style.display = "flex";
 
-    // Populate Think questions
     const thinkContainer = document.getElementById("thinkQuestionsContainer");
     thinkContainer.innerHTML = dayData.think.map((q, idx) => `
       <div style="display: flex; gap: 11px; align-items: flex-start; background: rgba(2,6,23,0.45); border: 1px solid rgba(30,41,59,0.8); border-radius: 14px; padding: 13px;">
@@ -306,7 +293,6 @@ function renderUI() {
 
     document.getElementById("liveDifferentlyText").textContent = dayData.live;
 
-    // Load Scratchpad values into Textareas
     document.getElementById("noteNotice").value = loadScratchpadField("notice");
     document.getElementById("noteGod").value = loadScratchpadField("god");
     document.getElementById("noteQuestions").value = loadScratchpadField("questions");
@@ -325,5 +311,4 @@ function renderUI() {
   triggerBibleGatewayTooltips();
 }
 
-// Initial Launch
 renderUI();
