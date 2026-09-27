@@ -3,32 +3,70 @@
 <!--
   ============================================================================
   BEING WITH JESUS — MEN'S DISCIPLESHIP MOBILE COMPANION
-  Version: 1.3.0 | Timestamp: 2026-09-15T13:00:00-07:00
+  Version: 1.3.1 | Timestamp: 2026-09-27T05:30:00-07:00
   Architecture: Lightweight Mobile-First PWA (HTML5, Vanilla JS, CSS)
   Hosting: Free GitHub Pages | Storage: Native Browser LocalStorage (Zero-Cost)
   ============================================================================
 -->
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
   <title>Being with Jesus | Paul & Roy's Group</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <script src="https://www.biblegateway.com/public/link-to-us/tooltips/bglinks.js" type="text/javascript"></script>
   <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; background: #0a0f18; color: #e7edf5; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-    a { color: #2dd4bf; text-decoration: none; }
-    a:hover { color: #5eead4; }
-    button, select, textarea { font-family: inherit; -webkit-tap-highlight-color: transparent; }
-    .tap:active { transform: scale(0.97); }
-    details > summary { list-style: none; }
-    details > summary::-webkit-details-marker { display: none; }
-    textarea:focus { outline: 1px solid #2dd4bf; }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #0a0f18;
+      color: #e7edf5;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: #2dd4bf;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #5eead4;
+    }
+
+    button,
+    select,
+    textarea {
+      font-family: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .tap:active {
+      transform: scale(0.97);
+    }
+
+    details>summary {
+      list-style: none;
+    }
+
+    details>summary::-webkit-details-marker {
+      display: none;
+    }
+
+    textarea:focus {
+      outline: 1px solid #2dd4bf;
+    }
+
     .btn-action-sm {
-      background: rgba(2,6,23,0.6);
-      border: 1px solid rgba(45,212,191,0.3);
+      background: rgba(2, 6, 23, 0.6);
+      border: 1px solid rgba(45, 212, 191, 0.3);
       color: #5eead4;
       font-size: 10px;
       font-weight: 700;
@@ -39,9 +77,10 @@
       align-items: center;
       gap: 3px;
     }
+
     .btn-clear-sm {
-      background: rgba(2,6,23,0.6);
-      border: 1px solid rgba(251,191,36,0.3);
+      background: rgba(2, 6, 23, 0.6);
+      border: 1px solid rgba(251, 191, 36, 0.3);
       color: #fcd34d;
       font-size: 10px;
       font-weight: 700;
@@ -51,19 +90,26 @@
     }
   </style>
 </head>
+
 <body style="min-height: 100vh; padding-bottom: 104px;">
 
   <!-- Sticky Header -->
-  <header style="position: sticky; top: 0; z-index: 40; background: rgba(10,15,24,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(30,41,59,0.8);">
+  <header
+    style="position: sticky; top: 0; z-index: 40; background: rgba(10,15,24,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(30,41,59,0.8);">
     <div style="max-width: 520px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 12px;">
-      <img src="Discipleship_logo.jpeg" alt="Logo" style="height: 38px; width: 38px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(45,212,191,0.25);" onerror="this.style.display='none'" />
+      <img src="Discipleship_logo.jpeg" alt="Logo"
+        style="height: 38px; width: 38px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(45,212,191,0.25);"
+        onerror="this.style.display='none'" />
       <div style="flex: 1; min-width: 0;">
-        <div style="font-size: 14px; font-weight: 800; color: #fff; letter-spacing: -0.01em;">Paul &amp; Roy's Group</div>
+        <div style="font-size: 14px; font-weight: 800; color: #fff; letter-spacing: -0.01em;">Paul &amp; Roy's Group
+        </div>
         <div style="font-size: 11px; color: #7c8ba1; font-weight: 500;">Being with Jesus · Sundays 9:00–10:30 AM</div>
       </div>
-      <div style="display: flex; align-items: center; gap: 6px; background: rgba(19,78,74,0.35); border: 1px solid rgba(20,184,166,0.3); padding: 6px 10px; border-radius: 9999px;">
+      <div
+        style="display: flex; align-items: center; gap: 6px; background: rgba(19,78,74,0.35); border: 1px solid rgba(20,184,166,0.3); padding: 6px 10px; border-radius: 9999px;">
         <span style="width: 6px; height: 6px; border-radius: 50%; background: #2dd4bf;"></span>
-        <span id="headerHuddleShort" style="font-size: 11px; font-weight: 700; color: #5eead4; font-family: 'IBM Plex Mono', monospace; white-space: nowrap;"></span>
+        <span id="headerHuddleShort"
+          style="font-size: 11px; font-weight: 700; color: #5eead4; font-family: 'IBM Plex Mono', monospace; white-space: nowrap;"></span>
       </div>
     </div>
   </header>
@@ -73,87 +119,126 @@
     <!-- Week Selector Bar & Review Button -->
     <div style="display: flex; align-items: center; gap: 8px;">
       <div style="position: relative; flex: 1; min-width: 0;">
-        <select id="weekSelect" onchange="setWeek(parseInt(this.value))" style="width: 100%; appearance: none; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; font-size: 14px; font-weight: 700; border-radius: 14px; padding: 13px 40px 13px 14px; outline: none; cursor: pointer;"></select>
-        <span style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #5eead4; font-size: 11px; pointer-events: none;">▼</span>
+        <select id="weekSelect" onchange="setWeek(parseInt(this.value))"
+          style="width: 100%; appearance: none; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; font-size: 14px; font-weight: 700; border-radius: 14px; padding: 13px 40px 13px 14px; outline: none; cursor: pointer;"></select>
+        <span
+          style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #5eead4; font-size: 11px; pointer-events: none;">▼</span>
       </div>
-      <button class="tap" onclick="toggleReviewModal(true)" title="Review notes for Sunday huddle" style="min-height: 48px; padding: 0 14px; border-radius: 14px; font-size: 13px; font-weight: 800; cursor: pointer; white-space: nowrap; border: 1px solid rgba(20,184,166,0.3); background: rgba(19,78,74,0.35); color: #5eead4;">📋 Review</button>
-      <button id="todayBtn" class="tap" onclick="jumpToToday()" style="min-height: 48px; padding: 0 16px; border-radius: 14px; font-size: 13px; font-weight: 800; cursor: pointer; white-space: nowrap; border: 1px solid #1e293b;">Today</button>
+      <button class="tap" onclick="toggleReviewModal(true)" title="Review notes for Sunday huddle"
+        style="min-height: 48px; padding: 0 14px; border-radius: 14px; font-size: 13px; font-weight: 800; cursor: pointer; white-space: nowrap; border: 1px solid rgba(20,184,166,0.3); background: rgba(19,78,74,0.35); color: #5eead4;">📋
+        Review</button>
+      <button id="todayBtn" class="tap" onclick="jumpToToday()"
+        style="min-height: 48px; padding: 0 16px; border-radius: 14px; font-size: 13px; font-weight: 800; cursor: pointer; white-space: nowrap; border: 1px solid #1e293b;">Today</button>
     </div>
 
     <!-- FULL WEEK HOMEWORK RANGE BANNER -->
-    <section style="background: linear-gradient(145deg, #0d1520, #111d28); border: 1px solid rgba(45,212,191,0.25); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px;">
+    <section
+      style="background: linear-gradient(145deg, #0d1520, #111d28); border: 1px solid rgba(45,212,191,0.25); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px;">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
         <div style="display: flex; align-items: center; gap: 7px;">
           <span style="font-size: 13px;">📚</span>
-          <span style="font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #5eead4;">Full Week Homework</span>
+          <span
+            style="font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #5eead4;">Full
+            Week Homework</span>
         </div>
-        <span id="weekRangeSpan" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 800; color: #2dd4bf; background: rgba(19,78,74,0.4); border: 1px solid rgba(20,184,166,0.3); padding: 3px 9px; border-radius: 8px; white-space: nowrap;"></span>
+        <span id="weekRangeSpan"
+          style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 800; color: #2dd4bf; background: rgba(19,78,74,0.4); border: 1px solid rgba(20,184,166,0.3); padding: 3px 9px; border-radius: 8px; white-space: nowrap;"></span>
       </div>
       <div id="weekRangeSubtext" style="font-size: 11.5px; color: #94a3b8; padding-left: 22px;"></div>
     </section>
 
     <!-- Sunday Huddle Card -->
-    <section style="background: linear-gradient(145deg,#111d28,#0d1520 55%,rgba(6,54,52,0.55)); border: 1px solid rgba(20,184,166,0.22); border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+    <section
+      style="background: linear-gradient(145deg,#111d28,#0d1520 55%,rgba(6,54,52,0.55)); border: 1px solid rgba(20,184,166,0.22); border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px;">
       <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;">
         <div>
-          <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">Sunday Huddle</div>
-          <div id="huddleTargetSunday" style="font-size: 17px; font-weight: 800; color: #fff; margin-top: 3px; letter-spacing: -0.01em;"></div>
+          <div
+            style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">
+            Sunday Huddle</div>
+          <div id="huddleTargetSunday"
+            style="font-size: 17px; font-weight: 800; color: #fff; margin-top: 3px; letter-spacing: -0.01em;"></div>
           <div id="huddleSubtitle" style="font-size: 12px; color: #8ea0b6; margin-top: 1px;"></div>
         </div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5eead4; background: rgba(2,6,23,0.5); border: 1px solid rgba(20,184,166,0.2); padding: 6px 12px; border-radius: 9999px; white-space: nowrap;">9:00 AM</div>
+        <div
+          style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5eead4; background: rgba(2,6,23,0.5); border: 1px solid rgba(20,184,166,0.2); padding: 6px 12px; border-radius: 9999px; white-space: nowrap;">
+          9:00 AM</div>
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-        <div style="background: rgba(2,6,23,0.55); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 11px;">
-          <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #2dd4bf;">🎤 Sharing</div>
-          <div id="huddleSharing" style="font-size: 14px; font-weight: 700; color: #f1f5f9; margin-top: 4px; line-height: 1.3;"></div>
+        <div
+          style="background: rgba(2,6,23,0.55); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 11px;">
+          <div
+            style="font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #2dd4bf;">
+            🎤 Sharing</div>
+          <div id="huddleSharing"
+            style="font-size: 14px; font-weight: 700; color: #f1f5f9; margin-top: 4px; line-height: 1.3;"></div>
         </div>
-        <div style="background: rgba(2,6,23,0.55); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 11px;">
-          <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fbbf24;">⚠️ Absent</div>
-          <div id="huddleAbsent" style="font-size: 14px; font-weight: 700; color: #e2e8f0; margin-top: 4px; line-height: 1.3;"></div>
+        <div
+          style="background: rgba(2,6,23,0.55); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 11px;">
+          <div
+            style="font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fbbf24;">
+            ⚠️ Absent</div>
+          <div id="huddleAbsent"
+            style="font-size: 14px; font-weight: 700; color: #e2e8f0; margin-top: 4px; line-height: 1.3;"></div>
         </div>
       </div>
 
-      <div id="huddleSpecialBox" style="display: none; gap: 9px; align-items: flex-start; background: rgba(6,78,74,0.4); border: 1px solid rgba(20,184,166,0.35); border-radius: 14px; padding: 11px;">
+      <div id="huddleSpecialBox"
+        style="display: none; gap: 9px; align-items: flex-start; background: rgba(6,78,74,0.4); border: 1px solid rgba(20,184,166,0.35); border-radius: 14px; padding: 11px;">
         <span style="font-size: 14px; line-height: 1.2;">📌</span>
         <div id="huddleSpecialText" style="font-size: 12.5px; color: #a7f3e4; line-height: 1.5;"></div>
       </div>
 
       <details>
-        <summary class="tap" style="cursor: pointer; font-size: 12px; font-weight: 700; color: #8ea0b6; display: flex; align-items: center; justify-content: space-between; padding: 9px 11px; background: rgba(2,6,23,0.4); border: 1px solid rgba(30,41,59,0.8); border-radius: 14px; min-height: 44px; box-sizing: border-box;">
+        <summary class="tap"
+          style="cursor: pointer; font-size: 12px; font-weight: 700; color: #8ea0b6; display: flex; align-items: center; justify-content: space-between; padding: 9px 11px; background: rgba(2,6,23,0.4); border: 1px solid rgba(30,41,59,0.8); border-radius: 14px; min-height: 44px; box-sizing: border-box;">
           <span>Roster &amp; group experiences</span><span style="color: #2dd4bf;">▾</span>
         </summary>
         <div style="margin-top: 9px; display: flex; flex-direction: column; gap: 9px;">
           <div id="rosterBadges" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
-          <div style="font-size: 11.5px; color: #7c8ba1; line-height: 1.55; border-top: 1px solid rgba(30,41,59,0.8); padding-top: 9px;">
-            <div><span style="color: #cbd5e1; font-weight: 700;">Serve Experience</span> — date &amp; project TBD; registration through church channels.</div>
-            <div style="margin-top: 4px;"><span style="color: #cbd5e1; font-weight: 700;">Baptisms</span> — Sat 11/21 &amp; Sun 11/22.</div>
+          <div
+            style="font-size: 11.5px; color: #7c8ba1; line-height: 1.55; border-top: 1px solid rgba(30,41,59,0.8); padding-top: 9px;">
+            <div><span style="color: #cbd5e1; font-weight: 700;">Serve Experience</span> — date &amp; project TBD;
+              registration through church channels.</div>
+            <div style="margin-top: 4px;"><span style="color: #cbd5e1; font-weight: 700;">Baptisms</span> — Sat 11/21
+              &amp; Sun 11/22.</div>
           </div>
         </div>
       </details>
     </section>
 
     <!-- Group Prayer & Fast Banner (Sep 27 + In-N-Out) -->
-    <section style="background: linear-gradient(145deg,rgba(6,78,74,0.42),rgba(13,21,32,0.9)); border: 1px solid rgba(20,184,166,0.3); border-radius: 20px; padding: 16px;">
+    <section
+      style="background: linear-gradient(145deg,rgba(6,78,74,0.42),rgba(13,21,32,0.9)); border: 1px solid rgba(20,184,166,0.3); border-radius: 20px; padding: 16px;">
       <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;">
         <div>
-          <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">🕊️ Prayer &amp; Fast</div>
-          <div style="font-size: 17px; font-weight: 800; color: #fff; margin-top: 4px; letter-spacing: -0.01em;">Sun Sep 27, 2026</div>
+          <div
+            style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">
+            🕊️ Prayer &amp; Fast</div>
+          <div style="font-size: 17px; font-weight: 800; color: #fff; margin-top: 4px; letter-spacing: -0.01em;">Sun Sep
+            27, 2026</div>
         </div>
-        <div id="fastCountdownBadge" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5eead4; background: rgba(2,6,23,0.45); border: 1px solid rgba(20,184,166,0.25); padding: 6px 12px; border-radius: 9999px; white-space: nowrap;"></div>
+        <div id="fastCountdownBadge"
+          style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5eead4; background: rgba(2,6,23,0.45); border: 1px solid rgba(20,184,166,0.25); padding: 6px 12px; border-radius: 9999px; white-space: nowrap;">
+        </div>
       </div>
       <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 9px;">
-        <div style="display: flex; gap: 10px; align-items: flex-start;">
-          <span style="width: 6px; height: 6px; border-radius: 50%; background: #2dd4bf; margin-top: 7px; flex: none;"></span>
+        <div style="display: gap: 10px; align-items: flex-start; display: flex;">
+          <span
+            style="width: 6px; height: 6px; border-radius: 50%; background: #2dd4bf; margin-top: 7px; flex: none;"></span>
           <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Fast begins Sat 9/26 at 12:00 PM.</span>
         </div>
         <div style="display: flex; gap: 10px; align-items: flex-start;">
-          <span style="width: 6px; height: 6px; border-radius: 50%; background: #2dd4bf; margin-top: 7px; flex: none;"></span>
-          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Sun 9/27 group prayer at Rossmoor Park, 10:45–1:00.</span>
+          <span
+            style="width: 6px; height: 6px; border-radius: 50%; background: #2dd4bf; margin-top: 7px; flex: none;"></span>
+          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Sun 9/27 group prayer at Rossmoor Park,
+            10:45–1:00.</span>
         </div>
         <div style="display: flex; gap: 10px; align-items: flex-start;">
-          <span style="width: 6px; height: 6px; border-radius: 50%; background: #fbbf24; margin-top: 7px; flex: none;"></span>
-          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Break fast together: Lunch after the fast and prayer at In-N-Out in Rossmoor.</span>
+          <span
+            style="width: 6px; height: 6px; border-radius: 50%; background: #fbbf24; margin-top: 7px; flex: none;"></span>
+          <span style="font-size: 13px; line-height: 1.5; color: #cfe8e2;">Break fast together: Lunch after the fast and
+            prayer at In-N-Out in Rossmoor.</span>
         </div>
       </div>
     </section>
@@ -162,103 +247,90 @@
     <div id="dayPillContainer" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px;"></div>
 
     <!-- Daily Study Focus Card -->
-    <section style="background: #111a28; border: 1px solid #1e293b; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 16px;">
-      
+    <section
+      style="background: #111a28; border: 1px solid #1e293b; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 16px;">
+
       <div style="display: flex; flex-direction: column; gap: 7px;">
-        <div id="studyDayHeading" style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;"></div>
-        <h2 id="studyTitle" style="margin: 0; font-size: 22px; line-height: 1.2; font-weight: 800; color: #fff; letter-spacing: -0.02em;"></h2>
+        <div id="studyDayHeading"
+          style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">
+        </div>
+        <h2 id="studyTitle"
+          style="margin: 0; font-size: 22px; line-height: 1.2; font-weight: 800; color: #fff; letter-spacing: -0.02em;">
+        </h2>
         <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-          <span id="studyScriptureBadge" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5eead4; background: rgba(6,78,74,0.35); border: 1px solid rgba(20,184,166,0.28); padding: 6px 12px; border-radius: 9999px;"></span>
-          <a id="studyBibleLink" href="#" target="_blank" class="tap" style="display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; color: #9fb0c5; border: 1px solid #1e293b; background: rgba(2,6,23,0.4); padding: 6px 12px; border-radius: 9999px;">Read on Bible Gateway ↗</a>
+          <span id="studyScriptureBadge"
+            style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5eead4; background: rgba(6,78,74,0.35); border: 1px solid rgba(20,184,166,0.28); padding: 6px 12px; border-radius: 9999px;"></span>
+          <a id="studyBibleLink" href="#" target="_blank" class="tap"
+            style="display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; color: #9fb0c5; border: 1px solid #1e293b; background: rgba(2,6,23,0.4); padding: 6px 12px; border-radius: 9999px;">Read
+            on Bible Gateway ↗</a>
         </div>
       </div>
 
       <!-- Podcast Launcher -->
-      <div style="background: rgba(2,6,23,0.5); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 10px;">
-        <a id="mainPodcastCTA" href="#" target="_blank" class="tap" style="display: flex; align-items: center; justify-content: center; gap: 9px; background: #0d9488; color: #fff; font-size: 15px; font-weight: 800; padding: 0 16px; height: 52px; border-radius: 14px;"></a>
+      <div
+        style="background: rgba(2,6,23,0.5); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 10px;">
+        <a id="mainPodcastCTA" href="#" target="_blank" class="tap"
+          style="display: flex; align-items: center; justify-content: center; gap: 9px; background: #0d9488; color: #fff; font-size: 15px; font-weight: 800; padding: 0 16px; height: 52px; border-radius: 14px;"></a>
         <div style="display: flex; align-items: center; gap: 7px;">
-          <span style="font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #64748b; flex: 1;">Default player</span>
+          <span
+            style="font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #64748b; flex: 1;">Default
+            player</span>
           <div id="playerButtons" style="display: flex; gap: 6px;"></div>
         </div>
       </div>
 
       <!-- SCRIPTURE READING CONTAINER -->
       <div style="display: flex; flex-direction: column; gap: 8px;">
-        <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">📖 Scripture Reading</div>
-        <div style="background: rgba(2,6,23,0.5); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+        <div
+          style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">
+          📖 Scripture Reading</div>
+        <div
+          style="background: rgba(2,6,23,0.5); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
           <div style="font-size: 14px; line-height: 1.6; color: #dbe4ef;">
-            Today's passage: <a id="inlineReftagLink" href="#" target="_blank" style="font-weight: 700; color: #5eead4; text-decoration: underline;"></a>
+            Today's passage: <a id="inlineReftagLink" href="#" target="_blank"
+              style="font-weight: 700; color: #5eead4; text-decoration: underline;"></a>
           </div>
-          <p id="activePassageHint" style="margin: 0; font-size: 12px; color: #8ea0b6; line-height: 1.5; display: none;">
-            Hover or tap the passage link above to preview verses inline via Bible Gateway, or click through to open the full chapter.
+          <p id="activePassageHint"
+            style="margin: 0; font-size: 12px; color: #8ea0b6; line-height: 1.5; display: none;">
+            Hover or tap the passage link above to preview verses inline via Bible Gateway, or click through to open the
+            full chapter.
           </p>
-          <div id="pendingNoticeBox" style="display: none; background: rgba(120,53,15,0.25); border: 1px solid rgba(251,191,36,0.4); border-radius: 10px; padding: 12px; color: #fde68a; margin-top: 4px;">
+          <div id="pendingNoticeBox"
+            style="display: none; background: rgba(120,53,15,0.25); border: 1px solid rgba(251,191,36,0.4); border-radius: 10px; padding: 12px; color: #fde68a; margin-top: 4px;">
             <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px;">
               <span>⏳</span><span>Content Digitization in Progress</span>
             </div>
             <p style="margin: 6px 0 0; font-size: 12px; color: #fef08a; line-height: 1.5;">
-              The questions and prompts for this day haven't been uploaded yet. Please be patient while we digitize the remaining workbook content! In the meantime, use the Bible Gateway link above to read the chapter focus.
+              The questions and prompts for this day haven't been uploaded yet. Please be patient while we digitize the
+              remaining workbook content! In the meantime, use the Bible Gateway link above to read the chapter focus.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- THINK SECTION: 2x2 QUADRANT OF ALL 4 QUESTIONS -->
-      <div id="thinkSection" style="display: flex; flex-direction: column; gap: 8px;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">
-            🤔 Think · Daily Quadrant
-          </div>
-          <span style="font-size: 10.5px; color: #7c8ba1; font-weight: 600;">Workbook Homework</span>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-          <!-- Top-Left Quadrant: Notice -->
-          <div style="background: rgba(2,6,23,0.55); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px;">
-            <div style="display: flex; align-items: center; gap: 6px;">
-              <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(45,212,191,0.2); color: #2dd4bf; font-size: 11px; font-weight: 800;">!</span>
-              <span style="font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #2dd4bf;">Notice</span>
-            </div>
-            <p id="quadNoticeText" style="margin: 0; font-size: 12px; line-height: 1.5; color: #dbe4ef;"></p>
-          </div>
-
-          <!-- Top-Right Quadrant: See God -->
-          <div style="background: rgba(2,6,23,0.55); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px;">
-            <div style="display: flex; align-items: center; gap: 6px;">
-              <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(94,234,212,0.2); color: #5eead4; font-size: 11px; font-weight: 800;">✝</span>
-              <span style="font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #5eead4;">See God</span>
-            </div>
-            <p id="quadGodText" style="margin: 0; font-size: 12px; line-height: 1.5; color: #dbe4ef;"></p>
-          </div>
-
-          <!-- Bottom-Left Quadrant: Questions -->
-          <div style="background: rgba(2,6,23,0.55); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px;">
-            <div style="display: flex; align-items: center; gap: 6px;">
-              <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(148,163,184,0.2); color: #94a3b8; font-size: 11px; font-weight: 800;">?</span>
-              <span style="font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #9fb0c5;">Questions</span>
-            </div>
-            <p id="quadQuestionsText" style="margin: 0; font-size: 12px; line-height: 1.5; color: #dbe4ef;"></p>
-          </div>
-
-          <!-- Bottom-Right Quadrant: Take Action -->
-          <div style="background: rgba(2,6,23,0.55); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px;">
-            <div style="display: flex; align-items: center; gap: 6px;">
-              <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: rgba(251,191,36,0.2); color: #fbbf24; font-size: 11px; font-weight: 800;">»</span>
-              <span style="font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fbbf24;">Take Action</span>
-            </div>
-            <p id="quadActionText" style="margin: 0; font-size: 12px; line-height: 1.5; color: #dbe4ef;"></p>
-          </div>
-        </div>
+      <!-- LEGACY HIDDEN ANCHORS (Prevents JS errors in app.js without showing redundant cards) -->
+      <div id="thinkSection" style="display: none !important;" aria-hidden="true">
+        <span id="quadNoticeText"></span>
+        <span id="quadGodText"></span>
+        <span id="quadQuestionsText"></span>
+        <span id="quadActionText"></span>
       </div>
 
-      <!-- LIVE DIFFERENTLY -->
+      <!-- LIVE DIFFERENTLY (Constant for Every Day) -->
       <div id="liveSection" style="display: flex; flex-direction: column; gap: 8px;">
-        <div style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #fbbf24;">🌱 Live Differently</div>
-        <div style="background: linear-gradient(160deg,rgba(120,53,15,0.18),rgba(2,6,23,0.45)); border: 1px solid rgba(251,191,36,0.22); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 11px;">
-          <p id="liveDifferentlyText" style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #dbe4ef;"></p>
-          <div style="display: flex; gap: 9px; align-items: center; border-top: 1px solid rgba(30,41,59,0.9); padding-top: 11px;">
+        <div
+          style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #fbbf24;">
+          🌱 Live Differently</div>
+        <div
+          style="background: linear-gradient(160deg,rgba(120,53,15,0.18),rgba(2,6,23,0.45)); border: 1px solid rgba(251,191,36,0.22); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 11px;">
+          <p id="liveDifferentlyText" style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #dbe4ef;">Look back
+            over our teaching, the Scripture you've read, and your answers above. What do you sense God is asking you to
+            do or change in your life today?</p>
+          <div
+            style="display: flex; gap: 9px; align-items: center; border-top: 1px solid rgba(30,41,59,0.9); padding-top: 11px;">
             <span style="font-size: 13px;">🙏</span>
-            <span style="font-size: 12.5px; color: #7fd8c8; line-height: 1.5;">Close your time with God in quiet prayer.</span>
+            <span style="font-size: 12.5px; color: #7fd8c8; line-height: 1.5;">Close your time with God in quiet
+              prayer.</span>
           </div>
         </div>
       </div>
@@ -266,64 +338,91 @@
       <!-- DIGITAL SCRATCHPAD (With Voice Dictation & Per-Question Reset) -->
       <div id="scratchpadSection" style="display: flex; flex-direction: column; gap: 8px;">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">✏️ My Study Notes &amp; Quadrant</span>
-          <span id="scratchpadSaveIndicator" style="font-size: 10px; color: #2dd4bf; font-family: 'IBM Plex Mono', monospace; opacity: 0; transition: opacity 0.3s;">✓ Saved to device</span>
+          <span
+            style="font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #5eead4;">✏️
+            My Study Notes &amp; Quadrant</span>
+          <span id="scratchpadSaveIndicator"
+            style="font-size: 10px; color: #2dd4bf; font-family: 'IBM Plex Mono', monospace; opacity: 0; transition: opacity 0.3s;">✓
+            Saved to device</span>
         </div>
 
-        <details open style="background: rgba(2,6,23,0.55); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 12px;">
-          <summary class="tap" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding-bottom: 4px;">
+        <details open
+          style="background: rgba(2,6,23,0.55); border: 1px solid rgba(30,41,59,0.9); border-radius: 14px; padding: 12px;">
+          <summary class="tap"
+            style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding-bottom: 4px;">
             <span style="font-size: 13px; font-weight: 700; color: #e7edf5;">Open Workbook Scratchpad</span>
-            <span id="scratchpadDayBadge" style="font-size: 11px; font-weight: 700; color: #2dd4bf; background: rgba(19,78,74,0.4); padding: 4px 8px; border-radius: 8px;"></span>
+            <span id="scratchpadDayBadge"
+              style="font-size: 11px; font-weight: 700; color: #2dd4bf; background: rgba(19,78,74,0.4); padding: 4px 8px; border-radius: 8px;"></span>
           </summary>
 
           <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 14px;">
-            
+
             <!-- 1. Notice -->
             <div style="display: flex; flex-direction: column; gap: 6px;">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <label style="font-size: 11px; font-weight: 700; color: #2dd4bf;">! Notice (aim for 4 observations):</label>
+                <label style="font-size: 11px; font-weight: 700; color: #2dd4bf;">! Notice (aim for 4
+                  observations):</label>
                 <div style="display: flex; gap: 6px;">
-                  <button type="button" id="micBtn_notice" class="tap btn-action-sm" onclick="toggleDictation('notice')">🎙️ Dictate</button>
-                  <button type="button" class="tap btn-clear-sm" onclick="clearSingleField('notice', 'Notice')">✕ Clear</button>
+                  <button type="button" id="micBtn_notice" class="tap btn-action-sm"
+                    onclick="toggleDictation('notice')">🎙️ Dictate</button>
+                  <button type="button" class="tap btn-clear-sm" onclick="clearSingleField('notice', 'Notice')">✕
+                    Clear</button>
                 </div>
               </div>
-              <textarea id="noteNotice" oninput="saveScratchpadField('notice', this.value)" rows="3" placeholder="Key words, repeated phrases, or cultural context..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
+              <textarea id="noteNotice" oninput="saveScratchpadField('notice', this.value)" rows="3"
+                placeholder="Key words, repeated phrases, or cultural context..."
+                style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
             </div>
 
             <!-- 2. See God -->
             <div style="display: flex; flex-direction: column; gap: 6px;">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <label style="font-size: 11px; font-weight: 700; color: #5eead4;">✝ What does this teach about God? (aim for 3):</label>
+                <label style="font-size: 11px; font-weight: 700; color: #5eead4;">✝ What does this teach about God? (aim
+                  for 3):</label>
                 <div style="display: flex; gap: 6px;">
-                  <button type="button" id="micBtn_god" class="tap btn-action-sm" onclick="toggleDictation('god')">🎙️ Dictate</button>
-                  <button type="button" class="tap btn-clear-sm" onclick="clearSingleField('god', 'See God')">✕ Clear</button>
+                  <button type="button" id="micBtn_god" class="tap btn-action-sm" onclick="toggleDictation('god')">🎙️
+                    Dictate</button>
+                  <button type="button" class="tap btn-clear-sm" onclick="clearSingleField('god', 'See God')">✕
+                    Clear</button>
                 </div>
               </div>
-              <textarea id="noteGod" oninput="saveScratchpadField('god', this.value)" rows="3" placeholder="What does this reveal about Jesus, Father, or Spirit?..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
+              <textarea id="noteGod" oninput="saveScratchpadField('god', this.value)" rows="3"
+                placeholder="What does this reveal about Jesus, Father, or Spirit?..."
+                style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
             </div>
 
             <!-- 3. Ask Questions -->
             <div style="display: flex; flex-direction: column; gap: 6px;">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <label style="font-size: 11px; font-weight: 700; color: #9fb0c5;">? Questions that came up? (aim for 2):</label>
+                <label style="font-size: 11px; font-weight: 700; color: #9fb0c5;">? Questions that came up? (aim for
+                  2):</label>
                 <div style="display: flex; gap: 6px;">
-                  <button type="button" id="micBtn_questions" class="tap btn-action-sm" onclick="toggleDictation('questions')">🎙️ Dictate</button>
-                  <button type="button" class="tap btn-clear-sm" onclick="clearSingleField('questions', 'Questions')">✕ Clear</button>
+                  <button type="button" id="micBtn_questions" class="tap btn-action-sm"
+                    onclick="toggleDictation('questions')">🎙️ Dictate</button>
+                  <button type="button" class="tap btn-clear-sm" onclick="clearSingleField('questions', 'Questions')">✕
+                    Clear</button>
                 </div>
               </div>
-              <textarea id="noteQuestions" oninput="saveScratchpadField('questions', this.value)" rows="2" placeholder="Challenging or confusing points to bring Sunday..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
+              <textarea id="noteQuestions" oninput="saveScratchpadField('questions', this.value)" rows="2"
+                placeholder="Challenging or confusing points to bring Sunday..."
+                style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
             </div>
 
             <!-- 4. Action Step -->
             <div style="display: flex; flex-direction: column; gap: 6px;">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <label style="font-size: 11px; font-weight: 700; color: #fbbf24;">» Action step to take? (aim for 1):</label>
+                <label style="font-size: 11px; font-weight: 700; color: #fbbf24;">» Action step to take? (aim for
+                  1):</label>
                 <div style="display: flex; gap: 6px;">
-                  <button type="button" id="micBtn_action" class="tap btn-action-sm" onclick="toggleDictation('action')">🎙️ Dictate</button>
-                  <button type="button" class="tap btn-clear-sm" onclick="clearSingleField('action', 'Action Step')">✕ Clear</button>
+                  <button type="button" id="micBtn_action" class="tap btn-action-sm"
+                    onclick="toggleDictation('action')">🎙️ Dictate</button>
+                  <button type="button" class="tap btn-clear-sm" onclick="clearSingleField('action', 'Action Step')">✕
+                    Clear</button>
                 </div>
               </div>
-              <textarea id="noteAction" oninput="saveScratchpadField('action', this.value)" rows="2" placeholder="Concrete, practical step God is asking you to take..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
+              <textarea id="noteAction" oninput="saveScratchpadField('action', this.value)" rows="2"
+                placeholder="Concrete, practical step God is asking you to take..."
+                style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
             </div>
 
             <!-- 5. Prayer -->
@@ -331,14 +430,19 @@
               <div style="display: flex; justify-content: space-between; align-items: center;">
                 <label style="font-size: 11px; font-weight: 700; color: #f43f5e;">∞ Write out your prayers:</label>
                 <div style="display: flex; gap: 6px;">
-                  <button type="button" id="micBtn_prayer" class="tap btn-action-sm" onclick="toggleDictation('prayer')">🎙️ Dictate</button>
-                  <button type="button" class="tap btn-clear-sm" onclick="clearSingleField('prayer', 'Prayer')">✕ Clear</button>
+                  <button type="button" id="micBtn_prayer" class="tap btn-action-sm"
+                    onclick="toggleDictation('prayer')">🎙️ Dictate</button>
+                  <button type="button" class="tap btn-clear-sm" onclick="clearSingleField('prayer', 'Prayer')">✕
+                    Clear</button>
                 </div>
               </div>
-              <textarea id="notePrayer" oninput="saveScratchpadField('prayer', this.value)" rows="2" placeholder="Personal prayers closing your quiet time..." style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
+              <textarea id="notePrayer" oninput="saveScratchpadField('prayer', this.value)" rows="2"
+                placeholder="Personal prayers closing your quiet time..."
+                style="width: 100%; background: #111a28; border: 1px solid #1e293b; color: #e7edf5; border-radius: 10px; padding: 10px; font-size: 13px; resize: vertical;"></textarea>
             </div>
 
-            <p style="margin: 0; font-size: 10.5px; color: #64748b; font-style: italic; border-top: 1px solid rgba(30,41,59,0.7); padding-top: 8px;">
+            <p
+              style="margin: 0; font-size: 10.5px; color: #64748b; font-style: italic; border-top: 1px solid rgba(30,41,59,0.7); padding-top: 8px;">
               🔒 Completely private. Notes are stored only on this browser and device.
             </p>
           </div>
@@ -348,32 +452,47 @@
     </section>
 
     <div style="text-align: center; padding: 2px 0 6px;">
-      <a href="https://beacons.ai/scgdiscipleship" target="_blank" style="font-size: 11.5px; color: #5b6b81;">SCG Media Hub ↗</a>
+      <a href="https://beacons.ai/scgdiscipleship" target="_blank" style="font-size: 11.5px; color: #5b6b81;">SCG Media
+        Hub ↗</a>
     </div>
 
   </main>
 
   <!-- Sunday Huddle Review Modal (Full Discipleship Export Tools) -->
-  <div id="reviewModal" style="display: none; position: fixed; inset: 0; z-index: 50; background: rgba(2,6,23,0.85); backdrop-filter: blur(8px); padding: 16px; align-items: center; justify-content: center;">
-    <div style="background: #0f172a; border: 1px solid rgba(20,184,166,0.4); border-radius: 20px; width: 100%; max-width: 520px; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden;">
-      
-      <div style="padding: 16px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center;">
+  <div id="reviewModal"
+    style="display: none; position: fixed; inset: 0; z-index: 50; background: rgba(2,6,23,0.85); backdrop-filter: blur(8px); padding: 16px; align-items: center; justify-content: center;">
+    <div
+      style="background: #0f172a; border: 1px solid rgba(20,184,166,0.4); border-radius: 20px; width: 100%; max-width: 520px; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden;">
+
+      <div
+        style="padding: 16px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center;">
         <div>
           <h3 style="margin: 0; font-size: 15px; font-weight: 800; color: #fff;">Weekly Notes Summary</h3>
           <span style="font-size: 11px; color: #2dd4bf;">Sunday Huddle Quick Reference</span>
         </div>
-        <button class="tap" onclick="toggleReviewModal(false)" style="background: #1e293b; border: 1px solid #334155; color: #cbd5e1; border-radius: 10px; padding: 6px 12px; font-size: 12px; cursor: pointer;">✕ Close</button>
+        <button class="tap" onclick="toggleReviewModal(false)"
+          style="background: #1e293b; border: 1px solid #334155; color: #cbd5e1; border-radius: 10px; padding: 6px 12px; font-size: 12px; cursor: pointer;">✕
+          Close</button>
       </div>
 
-      <div id="reviewSummaryContainer" style="padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; flex: 1;"></div>
+      <div id="reviewSummaryContainer"
+        style="padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; flex: 1;"></div>
 
-      <div style="padding: 14px 16px; border-top: 1px solid #1e293b; background: rgba(2,6,23,0.7); display: flex; flex-direction: column; gap: 8px;">
-        <button class="tap" onclick="copyWeekNotesToClipboard()" style="background: #0d9488; color: #fff; font-size: 13px; font-weight: 800; border: none; border-radius: 12px; padding: 12px; cursor: pointer;">📋 Copy Current Week Notes</button>
-        
+      <div
+        style="padding: 14px 16px; border-top: 1px solid #1e293b; background: rgba(2,6,23,0.7); display: flex; flex-direction: column; gap: 8px;">
+        <button class="tap" onclick="copyWeekNotesToClipboard()"
+          style="background: #0d9488; color: #fff; font-size: 13px; font-weight: 800; border: none; border-radius: 12px; padding: 12px; cursor: pointer;">📋
+          Copy Current Week Notes</button>
+
         <div style="display: flex; gap: 8px;">
-          <button class="tap" onclick="exportFullTenWeekJournal()" style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #5eead4; font-size: 11.5px; font-weight: 700; border-radius: 10px; padding: 10px; cursor: pointer;">💾 Export 10-Wk Journal (.txt)</button>
-          <button class="tap" onclick="downloadJsonBackup()" style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #94a3b8; font-size: 11.5px; font-weight: 700; border-radius: 10px; padding: 10px; cursor: pointer;">📦 Backup (.json)</button>
-          <label class="tap" style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #fbbf24; font-size: 11.5px; font-weight: 700; border-radius: 10px; padding: 10px; cursor: pointer; text-align: center;">
+          <button class="tap" onclick="exportFullTenWeekJournal()"
+            style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #5eead4; font-size: 11.5px; font-weight: 700; border-radius: 10px; padding: 10px; cursor: pointer;">💾
+            Export 10-Wk Journal (.txt)</button>
+          <button class="tap" onclick="downloadJsonBackup()"
+            style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #94a3b8; font-size: 11.5px; font-weight: 700; border-radius: 10px; padding: 10px; cursor: pointer;">📦
+            Backup (.json)</button>
+          <label class="tap"
+            style="flex: 1; background: #1e293b; border: 1px solid #334155; color: #fbbf24; font-size: 11.5px; font-weight: 700; border-radius: 10px; padding: 10px; cursor: pointer; text-align: center;">
             📥 Restore
             <input type="file" accept=".json" onchange="restoreJsonBackup(event)" style="display: none;">
           </label>
@@ -383,10 +502,15 @@
   </div>
 
   <!-- Fixed Bottom Navigation -->
-  <nav style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: rgba(10,15,24,0.9); backdrop-filter: blur(18px); border-top: 1px solid rgba(30,41,59,0.9); padding: 10px 16px calc(10px + env(safe-area-inset-bottom));">
+  <nav
+    style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: rgba(10,15,24,0.9); backdrop-filter: blur(18px); border-top: 1px solid rgba(30,41,59,0.9); padding: 10px 16px calc(10px + env(safe-area-inset-bottom));">
     <div style="max-width: 520px; margin: 0 auto; display: flex; gap: 10px;">
-      <button class="tap" onclick="navigateDay(-1)" style="flex: 1; min-height: 52px; background: #151f2e; border: 1px solid #243347; color: #9fb0c5; font-size: 14px; font-weight: 700; border-radius: 14px; cursor: pointer;">← Previous</button>
-      <button id="nextBtn" class="tap" onclick="navigateDay(1)" style="flex: 1.4; min-height: 52px; background: #0d9488; border: 1px solid #14b8a6; color: #fff; font-size: 15px; font-weight: 800; border-radius: 14px; cursor: pointer;">Next Day →</button>
+      <button class="tap" onclick="navigateDay(-1)"
+        style="flex: 1; min-height: 52px; background: #151f2e; border: 1px solid #243347; color: #9fb0c5; font-size: 14px; font-weight: 700; border-radius: 14px; cursor: pointer;">←
+        Previous</button>
+      <button id="nextBtn" class="tap" onclick="navigateDay(1)"
+        style="flex: 1.4; min-height: 52px; background: #0d9488; border: 1px solid #14b8a6; color: #fff; font-size: 15px; font-weight: 800; border-radius: 14px; cursor: pointer;">Next
+        Day →</button>
     </div>
   </nav>
 
@@ -394,4 +518,5 @@
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
+
 </html>
