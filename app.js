@@ -514,7 +514,7 @@ function renderUI() {
   if (hasUploadedData) {
     activeHint.style.display = "block";
     pendingNoticeBox.style.display = "none";
-    thinkSection.style.display = "flex";
+    // thinkSection suppressed
     liveSection.style.display = "flex";
     scratchpadSection.style.display = "flex";
 
@@ -537,8 +537,8 @@ function renderUI() {
     activeHint.style.display = "none";
     pendingNoticeBox.style.display = "block";
     thinkSection.style.display = "none";
-    liveSection.style.display = "none";
-    scratchpadSection.style.display = "none";
+    liveSection.style.display = "flex";
+    scratchpadSection.style.display = "flex";
   }
 
   document.getElementById("nextBtn").textContent = (currentDay === 5 ? "Next Week →" : "Next Day →");
@@ -546,3 +546,4 @@ function renderUI() {
 }
 
 renderUI();
+
