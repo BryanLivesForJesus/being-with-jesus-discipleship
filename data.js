@@ -1,7 +1,7 @@
 ﻿/**
  * ============================================================================
  * DATA.JS — BEING WITH JESUS DATA REGISTRY
- * Version: 1.3.1 | Timestamp: 2026-09-27T05:45:00-07:00
+ * Version: 1.4.0 | Timestamp: 2026-09-28T12:00:00-07:00
  * Description: Contains schedule dates, rosters, podcast links, and study text.
  * ============================================================================
  */
@@ -53,15 +53,15 @@ const cohortSchedule = {
     startEnd: "Day 1 (Acts 3:1–26) → Day 5 (Acts 6:1–15)",
     sharing: ["Joe C.", "Nate"],
     mia: [],
-    special: "🕊️ Group Prayer & Fast. Fast begins Sat 9/26 @ 12 PM. Sun 9/27 prayer at Rossmoor Park (10:45–1:00), followed by lunch after the fast and prayer at In-N-Out in Rossmoor."
+    special: ""
   },
   4: {
     targetSunday: "Sun, Oct 4",
     iso: "2026-10-04",
     theme: "Persecuted and Scattered",
     acts: "Acts 7–9",
-    fullRange: "Acts 7:1 – 9:43",
-    startEnd: "Day 1 (Acts 7:1–29) → Day 5 (Acts 9:32–43)",
+    fullRange: "Acts 7:1 – 9:19",
+    startEnd: "Day 1 (Acts 7:1–53) → Day 5 (Acts 9:1–19)",
     sharing: [],
     mia: ["Joe A.", "Joe C."],
     special: ""
@@ -146,7 +146,6 @@ const platformData = {
 
 /**
  * Digitized Workbook Content
- * Structured to support the 4 quadrant questions and the action step.
  */
 const studyDays = {
   // --- WEEK 2 ---
@@ -246,6 +245,58 @@ const studyDays = {
     title: "The Choosing of the Seven & Stephen's Arrest",
     scripture: "Acts 6:1–15",
     bibleUrl: makeBibleGatewayUrl("Acts 6:1-15", "NIV"),
+    noticeSubtext: "Write down a few things you noticed as you read (aim for 4).",
+    godSubtext: "What did this passage teach you about God / Jesus / Holy Spirit? (aim for 3).",
+    questionsSubtext: "What questions came up for you as you read? (aim for 2).",
+    actionSubtext: "What action do you need to take today? (aim for 1).",
+    live: "Look back over our teaching, the Scripture you've read, and your answers above. What do you sense God is asking you to do or change in your life today?"
+  },
+
+  // --- WEEK 4 ---
+  "4-1": {
+    title: "Stephen's Address to the Council",
+    scripture: "Acts 7:1–53",
+    bibleUrl: makeBibleGatewayUrl("Acts 7:1-53", "NIV"),
+    noticeSubtext: "Write down a few things you noticed as you read (aim for 4).",
+    godSubtext: "What did this passage teach you about God / Jesus / Holy Spirit? (aim for 3).",
+    questionsSubtext: "What questions came up for you as you read? (aim for 2).",
+    actionSubtext: "What action do you need to take today? (aim for 1).",
+    live: "Look back over our teaching, the Scripture you've read, and your answers above. What do you sense God is asking you to do or change in your life today?"
+  },
+  "4-2": {
+    title: "The Stoning of Stephen & the Church Scattered",
+    scripture: "Acts 7:54–8:3",
+    bibleUrl: makeBibleGatewayUrl("Acts 7:54-8:3", "NIV"),
+    noticeSubtext: "Write down a few things you noticed as you read (aim for 4).",
+    godSubtext: "What did this passage teach you about God / Jesus / Holy Spirit? (aim for 3).",
+    questionsSubtext: "What questions came up for you as you read? (aim for 2).",
+    actionSubtext: "What action do you need to take today? (aim for 1).",
+    live: "Look back over our teaching, the Scripture you've read, and your answers above. What do you sense God is asking you to do or change in your life today?"
+  },
+  "4-3": {
+    title: "Philip Proclaims Christ in Samaria",
+    scripture: "Acts 8:4–25",
+    bibleUrl: makeBibleGatewayUrl("Acts 8:4-25", "NIV"),
+    noticeSubtext: "Write down a few things you noticed as you read (aim for 4).",
+    godSubtext: "What did this passage teach you about God / Jesus / Holy Spirit? (aim for 3).",
+    questionsSubtext: "What questions came up for you as you read? (aim for 2).",
+    actionSubtext: "What action do you need to take today? (aim for 1).",
+    live: "Look back over our teaching, the Scripture you've read, and your answers above. What do you sense God is asking you to do or change in your life today?"
+  },
+  "4-4": {
+    title: "Philip and the Ethiopian Official",
+    scripture: "Acts 8:26–40",
+    bibleUrl: makeBibleGatewayUrl("Acts 8:26-40", "NIV"),
+    noticeSubtext: "Write down a few things you noticed as you read (aim for 4).",
+    godSubtext: "What did this passage teach you about God / Jesus / Holy Spirit? (aim for 3).",
+    questionsSubtext: "What questions came up for you as you read? (aim for 2).",
+    actionSubtext: "What action do you need to take today? (aim for 1).",
+    live: "Look back over our teaching, the Scripture you've read, and your answers above. What do you sense God is asking you to do or change in your life today?"
+  },
+  "4-5": {
+    title: "The Conversion of Saul",
+    scripture: "Acts 9:1–19",
+    bibleUrl: makeBibleGatewayUrl("Acts 9:1-19", "NIV"),
     noticeSubtext: "Write down a few things you noticed as you read (aim for 4).",
     godSubtext: "What did this passage teach you about God / Jesus / Holy Spirit? (aim for 3).",
     questionsSubtext: "What questions came up for you as you read? (aim for 2).",
